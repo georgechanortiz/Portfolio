@@ -1,24 +1,18 @@
-/* ─────────────────────────────────────────────── */
-/*               IMPORT FONTS                      */
-/* ─────────────────────────────────────────────── */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;200&display=swap');
-/* ───────────── END IMPORT FONTS ──────────────── */
-
-
-
 /* ─────────────────────────────────────────────── */
 /*               GLOBAL STYLES                     */
 /* ─────────────────────────────────────────────── */
-body {
+html, body {
   margin: 0;
-  background-color: #0f0f0f;
+  padding: 0;
+  background-color: #122b43;
   color: #ffffff;
   font-family: 'Courier New', monospace;
   line-height: 1.6;
 }
 
 a {
-  color: #3366cc;
+  color: #010711;
 }
 /* ───────────── END GLOBAL STYLES ─────────────── */
 
@@ -28,7 +22,7 @@ a {
 /*               HEADER & NAVIGATION               */
 /* ─────────────────────────────────────────────── */
 header {
-  background: #0a2160;
+  background: #0c1c2b;
   color: #fff;
   padding: 2rem;
   font-size: 1.2rem;
@@ -37,7 +31,7 @@ header {
 
 nav a {
   color: #f4fcff;
-  margin: 0 1rem;
+  margin: 0.5rem;
   text-decoration: none;
 }
 
@@ -54,7 +48,7 @@ nav a:hover {
 .typing-banner {
   position: relative;
   z-index: 1;
-  padding: 2rem;
+  padding: 0rem;
   text-align: center;
   overflow: hidden;
 }
@@ -77,52 +71,55 @@ nav a:hover {
   z-index: 1;
   background: transparent;
   color: #ffffff;
-  margin-top: 0.5rem;
-  font-size: 2rem;
+  font-size: 3rem;
   text-align: center;
+  padding-bottom: 0rem;
 }
 
 .typing-banner h1 {
   margin: 0;
+  padding: 0;
 }
 /* ────────────── END TYPING BANNER ────────────── */
-
-
 
 /* ─────────────────────────────────────────────── */
 /*               HERO SECTION                      */
 /* ─────────────────────────────────────────────── */
-
-.hero {
-    position: relative;  /* For positioning ::before */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 2rem;
-    padding: 2rem;
-    overflow: hidden;    /* Prevent background overflow */
-    z-index: 1;
-    width: 100vw; 
-    margin: 0 auto;
-   
-  }
-  
   /* === Hero Background Image (WorldMap) === */
   .hero::before {
     content: "";
     position: absolute;
-    top: 0;
+    top: -50px; /* Move the image up slightly */
     left: 0;
-    width: 100%;
-    height: 100%;
+
     background-image: url('Images/WorldMap.svg');
-    background-size: cover;
-    background-position: center;
+    background-size: auto;  /* Stretch to fill */
+    background-repeat: repeat;
+    background-position: -200px center; /* Align to the top */
+    width: 100%;
+    height: 150%; /* Extend the image beyond the bottom */
     opacity: 0.3;
     z-index: 0;
     pointer-events: none;
   }
+.hero {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+  padding: 2rem;
+  overflow: hidden;
+  z-index: 1;
+  width: 100%;
+  max-width: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+
   
   /* Hero Content (placed above background) */
   .hero-image {
@@ -132,10 +129,10 @@ nav a:hover {
     border-radius: 8px;
     flex-shrink: 0;
     z-index: 1;
+    
   }
   
   .hero-text {
-    flex: 1;
     min-width: 250px;
     z-index: 1;
   }
@@ -182,7 +179,7 @@ section {
 }
 
 .project-card {
-  background: #0a2160;
+  background: #0c1c2b;
   color: #ffffff;
   padding: 1rem;
   border-radius: 8px;
@@ -195,14 +192,14 @@ section {
 }
 
 .project-card:hover {
-  background: #0a2160;
+  background: #102357;
   transform: translateY(-3px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
 .project-card:active {
   transform: translateY(1px);
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 6px rgba(8, 8, 8, 0.2);
 }
 
 .project-card:focus {
@@ -234,6 +231,6 @@ footer {
   text-align: center;
   padding: 1rem;
   background: #222;
-  color: #bbb;
+  color: #ffffff;
 }
 /* ───────────────── END FOOTER ────────────────── */
