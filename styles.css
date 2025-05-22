@@ -7,7 +7,7 @@ html, body {
   padding: 0;
   background-color: #122b43;
   color: #ffffff;
-  font-family: 'Courier New', monospace;
+  font-family: 'Roboto', monospace;
   line-height: 1.6;
 }
 
@@ -24,9 +24,19 @@ a {
 header {
   background: #0c1c2b;
   color: #fff;
-  padding: 2rem;
-  font-size: 1rem; /* Reduced font size to make it smaller */
+  padding: 1rem 2.5rem;
+  font-size: 1rem;
   text-align: right;
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  border-radius: 2rem;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.18);
+  width: auto;
+  min-width: 220px;
+  max-width: 90vw;
+  z-index: 10;
+  display: inline-block;
 }
 
 
@@ -39,7 +49,7 @@ ul{
 }
 
 ul li a{
-  color: gray;
+  color: rgb(255, 255, 255);
   font-size: 20px;
   text-decoration: none;
   text-transform: uppercase;
@@ -48,12 +58,12 @@ ul li a{
   position: relative;
   transition: all .5s;
 }
-
 a:hover{
   background-color: #102357;
   color: white;
   box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
   transform: translateY(-3px);
+  border-radius: 1.2rem;
 }
 
 a::before{
@@ -127,6 +137,46 @@ a::after{
   padding: 0;
 }
 /* ────────────── END TYPING BANNER ────────────── */
+/* ─────────────────────────────────────────────── */
+/*               ICON SECTION                      */
+/* ─────────────────────────────────────────────── */
+
+.icon-container {
+  display: flex;
+  gap: 1rem; /* Adds spacing between icons */
+  justify-content: center; /* Center the icons horizontally */
+  align-items: center;     /* Center the icons vertically if needed */
+  padding-top: 15px;
+}
+
+.icon-container a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: #333;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+
+}
+
+.icon-container a:hover {
+  background-color: #555;
+}
+
+.icon-container img.github,
+.icon-container img.linkedin,
+.icon-container img.email {
+  width: 30px;
+  height: 30px;
+}
+
+/* ────────────── END ICONS SECTION ────────────── */
+
+
+
 
 /* ─────────────────────────────────────────────── */
 /*               HERO SECTION                      */
@@ -138,7 +188,7 @@ a::after{
     top: -50px; /* Move the image up slightly */
     left: 0;
 
-    background-image: url('Images/WorldMap.svg');
+    background-image: url('Files/WorldMap.svg');
     background-size: auto;  /* Stretch to fill */
     background-repeat: repeat;
     background-position: -200px center; /* Align to the top */
@@ -163,6 +213,8 @@ a::after{
   display: flex;
   flex-wrap: wrap;
   gap: 2rem;
+  
+  margin-bottom: 4rem;
 }
 
 
@@ -213,7 +265,17 @@ section {
 }
 /* ────────────── END MAIN SECTIONS ────────────── */
 
-
+/* ─────────────────────────────────────────────── */
+/*               ABOUT SECTION                     */
+/* ─────────────────────────────────────────────── */
+#about {
+  background: #0c1c2b;
+  border-radius: 2rem;
+  padding: 2rem;
+  max-width: 1000px;
+  margin: auto;
+}
+/* ────────────── END ABOUT SECTION ────────────── */
 
 /* ─────────────────────────────────────────────── */
 /*               PROJECTS GRID                     */
