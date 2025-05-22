@@ -27,7 +27,7 @@ header {
   padding: 1rem 2.5rem;
   font-size: 1rem;
   text-align: right;
-  position: relative;
+  position: absolute;
   top: 2rem;
   right: 2rem;
   border-radius: 2rem;
@@ -39,8 +39,7 @@ header {
   display: inline-block;
 }
 
-
-ul{
+ul {
   margin: 0;
   padding: 0;
   display: flex;
@@ -48,7 +47,7 @@ ul{
   justify-content: right;
 }
 
-ul li a{
+ul li a {
   color: rgb(255, 255, 255);
   font-size: 20px;
   text-decoration: none;
@@ -58,7 +57,8 @@ ul li a{
   position: relative;
   transition: all .5s;
 }
-a:hover{
+
+a:hover {
   background-color: #102357;
   color: white;
   box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
@@ -66,8 +66,8 @@ a:hover{
   border-radius: 1.2rem;
 }
 
-a::before{
-  content:"";
+a::before {
+  content: "";
   position: absolute;
   bottom: 12px; 
   left: 12px;
@@ -79,8 +79,8 @@ a::before{
   transform: all 0.3s;
 }
 
-a::after{
-  content:"";
+a::after {
+  content: "";
   position: absolute;
   top: 12px; 
   right: 12px;
@@ -92,10 +92,29 @@ a::after{
   transform: all 0.3s;
 }
 
+/* -------- Mobile Styles -------- */
+@media (max-width: 600px) {
+  header {
+    position: relative;
+    top: 0;
+    right: 0;
+    width: 100%;
+    border-radius: 0;
+    text-align: center;
+    padding: 1rem;
+    box-sizing: border-box;
+  }
 
+  ul {
+    flex-direction: column;
+    align-items: center;
+  }
 
-/* ──────── END HEADER & NAVIGATION ────────────── */
-
+  ul li a {
+    margin: 5px 0;
+    display: inline-block;
+  }
+}
 
 
 /* ─────────────────────────────────────────────── */
