@@ -121,3 +121,18 @@ a::after {
     display: inline-block;
   }
 }
+/* ───────────── END HEADER & NAVIGATION ─────────────── */
+.pdf-container {
+  padding: 0;
+  margin: 0 auto;
+  max-width: 1000px;
+  padding-top: 8rem;
+}
+
+.pdf-viewer {
+  width: 100%;
+  height: 1150px;
+  border: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* optional soft shadow */
+  border-radius: 8px; /* optional rounded corners */
+}
