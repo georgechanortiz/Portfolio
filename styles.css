@@ -27,7 +27,7 @@ header {
   padding: 1rem 2.5rem;
   font-size: 1rem;
   text-align: right;
-  position: absolute;
+  position: relative;
   top: 2rem;
   right: 2rem;
   border-radius: 2rem;
