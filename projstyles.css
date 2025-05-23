@@ -12,11 +12,21 @@ html, body {
 }
 
 a {
-  color: #010711;
+  color: #110101;
 }
 /* ───────────── END GLOBAL STYLES ─────────────── */
 
 
+h1 {
+    font-family: 'Roboto', monospace;
+    font-size: 2.5rem;
+    color: #ffffff;
+    text-align: center;
+    margin-top: 2rem;
+    margin-bottom: 1.5rem;
+    font-style: bold;
+
+}
 
 /* ─────────────────────────────────────────────── */
 /*               HEADER & NAVIGATION               */
@@ -114,6 +124,8 @@ a::after {
     align-items: center;
     justify-content: center;
     width: 100%;
+    margin-left: 1rem;
+
   }
 
   ul li a {
@@ -149,6 +161,7 @@ header {
 header ul {
   list-style-type: none;
   padding: 0;
+
   margin: 0;
 }
 
@@ -185,9 +198,6 @@ header a {
   }
 }
 
-
-
-
 .project-card {
     background-color: #0c1c2b;
     border-radius: 12px;
@@ -196,7 +206,10 @@ header a {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     display: flex;
     flex-direction: column;
+    padding: 1rem; /* <-- Add this */
+    box-sizing: border-box; /* Ensure padding is included in width */
 }
+
 
 .project-card:hover {
     transform: translateY(-5px);
@@ -222,21 +235,27 @@ header a {
 
 /* Bullet point list styles */
 ul, ol {
-    margin: 1em 2em 1em 2em; /* Increased right margin to 2em */
+    margin: 1em 2em 1em 2em;
     padding: 0;
     color: #e0e6ed;
     font-size: 1rem;
     line-height: 1.7;
-    display: block;         /* Ensure lists are block elements */
-    flex-direction: column; /* In case flex is inherited, force column */
+    display: block; /* Block ensures vertical stacking */
+    /* Remove flex-direction */
+    word-wrap: break-word; /* Optional: helps with very long words/URLs */
 }
+
 
 ul li, ol li {
-    margin-bottom: 0.5em;
-    padding-left: 0.2em;
-    display: list-item;     /* Ensure list items are block and stacked */
+    word-wrap: break-word;
+    overflow-wrap: break-word;
 }
 
+@media (max-width: 600px) {
+  ul, ol {
+    margin: 1em 1em;
+  }
+}
 ul {
     list-style-type: disc;
     display: block;         /* Prevent flex from parent */
@@ -302,4 +321,22 @@ h3 {
     opacity: 0.9;
     background: linear-gradient(90deg, #1b4266 0%, #16436e 75%);
     color: #ffffff;
+}
+
+
+.video-container {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%; /* 16:9 aspect ratio */
+  height: 0;
+  overflow: hidden;
+}
+
+.video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
 }
