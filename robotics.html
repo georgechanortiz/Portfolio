@@ -17,45 +17,202 @@
   <div class="project-card">
     <img src="Files/RoboticsProjs/1.png" alt="Project 1" />
     <h2>LeRobot Arm Hackathon NYC</h2>
-    <p>Brief description of project 1 goes here...</p>
+    <h3>Contributions</h3>
+    <ul>
+      <li>Leader and follower robot had mapped trajectories, so the mechanical and electrical noise could be separated and a 
+          filter could be applied to the electrical noise to reduce trembling and increasing speed by 200%
+      </li>
+      <li>Built and calibrated robot leader and follower, troubleshooted hardware issues with motor</li>
+    </ul>
+    <h3>Results</h3>
+    <ul>
+      <li>Won $1000 prize for "Most Innovative Use of Data"</li>
+      <li>Robot can pick up a pen, draw a dollar sign ($), and then place the pen down autonomously using cameravision as feedback</li>
+    </ul>
+    <div class="skills-section">
+      <h3>Skills</h3>
+      <ul class="skills-list">
+        <li>Action Chunking Transformer (ACT) Policy</li>
+        <li>Data Filtering</li>
+        <li>Machine Learning</li>
+      </ul>
+    </div>
   </div>
   <div class="project-card">
     <img src="Files/RoboticsProjs/2.png" alt="Project 2" />
     <h2>Machine Learning Algorithm - Doosan H2515 Pick and Place</h2>
-    <p>Brief description of project 2 goes here...</p>
+    <h3>Contributions</h3>
+    <ul>
+      <li>Trained AI and implemented image processing to identify cubes and return pixel location and color classification. </li>
+      <li>Converted pixel coordinates to numerical inverse kinematic solution for arm navigation</li>
+      <li>Created path planning algorithms for robot arm, built client-server connection with TCP protocol to send commands 
+        for robot to execute</li>
+    </ul>
+    <h3>Results</h3>
+    <ul>
+      <li>Robot able to execute sorting tasks autonomously</li>
+      <li>Algorithm able to identify precise locatiosn of cubes for sorting or building operations</li>
+    </ul>
+    <div class="skills-section">
+      <h3>Skills</h3>
+      <ul class="skills-list">
+        <li>OpenCV</li>
+        <li>YOLOv8</li>
+        <li>DRL Programming Language</li>
+        <li>Python</li>
+        <li>Path Planning</li>
+        <li>Pick and Place</li>
+      </ul>
+    </div>
   </div>
+
   <div class="project-card">
     <iframe 
-      width="840" 
+      width="730" 
       height="472" 
-      src="https://www.youtube.com/watch?v=m14FWpo8iBI&ab_channel=GeorgeOrtiz" 
+      src="https://www.youtube.com/embed/m14FWpo8iBI?si=0uMDb3gk_2EYJ6HL" 
       frameborder="0" 
       allowfullscreen>
     </iframe>
-    <h2>Control and Resolved Rates Simulations in MATLAB</h2>
-    <p>Brief description of project 3 goes here...</p>
-  </div>
-  <div class="project-card">
-    <img src="images/project4.jpg" alt="Project 4" />
     <h2>Using Gradient to Compute Min. Norm Pseudoinverse Redundancy Resolution</h2>
-    <p>Brief description of project 4 goes here...</p>
+    <h3>Contributions</h3>
+    <ul>
+      <li>Calculated Jacobian and gradient of path, projecting into null space to accomplish secondary objective</li>
+      <li>Simulated robot links and movement, implementing minimum norm pseudoinverse redundancy resolution</li>
+    </ul>
+    <h3>Results</h3>
+    <ul>
+      <li>Robot goes from starting position to follow trajectory, maintaining orthogonality to surface. This is useful 
+        in applications such as welding or writing, where the end effector must maintain a specific angle to the surface</li>
+    </ul>
+        <div class="skills-section">
+      <h3>Skills</h3>
+      <ul class="skills-list">
+        <li>MATLAB</li>
+        <li>Jacobian</li>
+        <li>Resolved Rates</li>
+      </ul>
+    </div>
   </div>
   <div class="project-card">
-    <img src="images/project5.jpg" alt="Project 5" />
+    <img src="Files/RoboticsProjs/5.png" alt="Project 4" />
+    <h2>Control and Resolved Rates Simulations in MATLAB</h2>
+    <h3>Contributions</h3>
+    <ul>
+      <li>Implemented cost functions to optimize link speeds for optimization</li>
+      <li>Implemented inverse kinematics for Puma 560 robot to adhere to minimum and maximum speed parameters</li>
+      <li>Simulated robot links and movement in MATLAB using first order interpolation.</li>
+    </ul>
+    <h3>Results</h3>
+    <ul>
+      <li>Closed loop algorithm enabled robot to adhere to constraints within millimeter tolerance in the translational 
+        frame and 0.0524 radians in the rotational frame</li>
+      <li>Gained deeper understanding of robot behavior to predict collision and manage motor speeds</li>
+    </ul>
+    <div class="skills-section">
+      <h3>Skills</h3>
+      <ul class="skills-list">
+        <li>Cost Functions</li>
+        <li>Resolved Rates</li>
+        <li>MATLAB</li>
+      </ul>
+    </div>
+  </div>
+  <div class="project-card">
+    <img src="Files/RoboticsProjs/7.png" alt="Project 5" />
     <h2>Doosan H2515 Robot Gripper - End Effector</h2>
-    <p>Brief description of project 5 goes here...</p>
+      <h3>Contributions</h3>
+      <ul>
+        <li>End effector designed using a gear and hinging mechanism to open and close jaws</li>
+        <li>Arduino sends PWM signal to a motor controller for actuation of jaws, controlled by digital IO on the robot's flange.
+           Allows the jaw actuation to be toggled directly by the teaching pendant interface.
+        </li>
+        <li>Voltage divider circuit constructed to step voltage seen by the Arduino down from the robot flange</li>
+      </ul>
+      <h3>Results</h3>
+      <ul>
+        <li>End effector can be toggled directly from the teaching pendant and programmed to open and close using Doosan Programming Language (DRL)</li>
+        <li>Adjustment of PWM signal sent to controller can be adjusted to hold various sized objects</li>
+      </ul>
+      <div class="skills-section">
+        <h3>Skills</h3>
+        <ul class="skills-list">
+          <li>SolidWorks</li>
+          <li>Mechatronics</li>
+          <li>3D Printing</li>
+        </ul>
+      </div>
   </div>
   <div class="project-card">
-    <img src="images/project6.jpg" alt="Project 6" />
+    <img src="Files/RoboticsProjs/4.png" alt="Project 6" />
     <h2>SESMA 3.0 - Soft Exosuit for Patients with Spinal Muscular Atrophy</h2>
-    <p>Brief description of project 6 goes here...</p>
+      <h3>Contributions</h3>
+      <ul>
+        <li>Recorded positional leg data using 8 markers, then used 3D splines to analyze data and utilize numerical techniques to 
+          discretize data to calculate the change in length of a cable routed down the leg for sit to stand transitions. 
+        </li>
+        <li>Used data and compared with knee torque curves to determine optimal release of clutch mechanism for standing assistance</li>
+        <li>Machined, 3D printed components in functional prototype</li>
+      </ul>
+      <h3>Results</h3>
+      <ul>
+        <li>Achieved 10% knee assistance</li>
+        <li>Timing of mechanism with PID compensation to monitor transitions for real-time feedback and control </li>
+      </ul>
+      <div class="skills-section">
+        <h3>Skills</h3>
+        <ul class="skills-list">
+          <li>CNC programming and machining</li>
+          <li>PID compensation</li>
+          <li>3D splines</li>
+        </ul>
+      </div>
   </div>
   <div class="project-card">
-    <img src="images/project7.jpg" alt="Project 7" />
-    <h2>Hand Squeezing Device for Grip Strength Rehabilitationx</h2>
-    <p>Brief description of project 7 goes here...</p>
+    <img src="Files/RoboticsProjs/8.png" alt="Project 7" />
+    <h2>Hand Squeezing Device for Grip Strength Rehabilitation</h2>
+      <h3>Contributions</h3>
+      <ul>
+        <li>Integrated sensors, actuators, and an LCD display using a PIC16F88 microcontroller</li>
+        <li>Wired, debugged system, researching functions in PICBASIC language that could be used to convert analog to digital signal</li>
+        <li>Implemented fourbar linkage system which adjusted the tension of a band placed inside the device</li>
+      </ul>
+      <h3>Results</h3>
+      <ul>
+        <li>LCD display programmed to output repetition count and force output</li>
+        <li>Potentiometer successfully controlled servo connected to fourbar linkage, adjusting force as desired</li>
+      </ul>
+      <div class="skills-section">
+        <h3>Skills</h3>
+        <ul class="skills-list">
+          <li>PICBasic Pro</li>
+          <li>Mechatronics</li>
+          <li>Fourbar Linkage</li>
+        </ul>
+      </div>
   </div>
 </section>
 
 </body>
 </html>
+
+<!--
+<h3>Contributions</h3>
+<ul>
+  <li></li>
+  <li></li>
+</ul>
+<h3>Results</h3>
+<ul>
+  <li></li>
+  <li></li>
+</ul>
+<div class="skills-section">
+  <h3>Skills</h3>
+  <ul class="skills-list">
+    <li></li>
+    <li></li>
+    <li></li>
+  </ul>
+</div>
+-->
