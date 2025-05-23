@@ -10,7 +10,6 @@ html, body {
   font-family: 'Roboto', monospace;
   line-height: 1.6;
 }
-
 a {
   color: #010711;
 }
@@ -350,9 +349,9 @@ section {
   background: #222;
   display: flex;
   flex-direction: column;
-  align-items: left;
+  align-items: flex-start;
   margin-top: 2rem;
-  color
+  color: #ffffff;
 }
 /* ───────────── END CONTACT SECTION ───────────── */
 
