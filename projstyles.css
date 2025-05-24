@@ -75,13 +75,16 @@ ul li a {
   text-decoration: none;
   text-transform: uppercase;
   padding: 5px 10px;
-  margin: 0px 10px;
+  margin: 0px 0px;
   position: relative;
   transition: all .5s;
+  
+  border-radius: 1.2rem;
+
 }
 
 a:hover {
-  background-color: #193581;
+  background: linear-gradient(90deg, #1b4266 0%, #16436e 75%);
   color: white;
   box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
   transform: translateY(-3px);
@@ -327,7 +330,9 @@ ul li::marker, ol li::marker {
 .skills-list li:hover {
     opacity: 0.9;
     background: linear-gradient(90deg, #1b4266 0%, #16436e 75%);
-    color: #ffffff;
+    color: white;
+    box-shadow: 0 2px 3px rgba(255, 255, 255, 0.2);
+    transform: translateY(-1px);
 }
 
 

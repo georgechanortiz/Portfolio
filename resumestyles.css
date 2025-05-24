@@ -58,10 +58,11 @@ ul li a {
   margin: 0px 10px;
   position: relative;
   transition: all .5s;
+  border-radius: 1.2rem;
 }
 
 a:hover {
-  background-color: #102357;
+  background: linear-gradient(90deg, #1b4266 0%, #16436e 75%);
   color: white;
   box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
   transform: translateY(-3px);
