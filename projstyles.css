@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 /* ─────────────────────────────────────────────── */
 /*               GLOBAL STYLES                     */
 /* ─────────────────────────────────────────────── */
@@ -7,7 +8,7 @@ html, body {
   padding: 0;
   background-color: #122b43;
   color: #ffffff;
-  font-family: 'Roboto', monospace;
+  font-family: "IBM Plex Serif", serif;
   line-height: 1.6;
 }
 
@@ -18,7 +19,7 @@ a {
 
 
 h1 {
-    font-family: 'Roboto', monospace;
+    font-family: "IBM Plex Serif", serif;
     font-size: 2.5rem;
     color: #ffffff;
     text-align: center;
@@ -59,12 +60,14 @@ header {
 }
 
 ul {
+  font-family: "Inter", sans-serif;
   margin: 0;
   padding: 0;
   display: flex;
   list-style-type: none;
   justify-content: right;
 }
+
 
 ul li a {
   color: rgb(255, 255, 255);
@@ -78,7 +81,7 @@ ul li a {
 }
 
 a:hover {
-  background-color: #102357;
+  background-color: #193581;
   color: white;
   box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
   transform: translateY(-3px);
@@ -92,7 +95,7 @@ a::before {
   left: 12px;
   height: 12px;
   width: 12px;
-  border: 3px solid #102357;
+  border: 3px solid #193581;
   border-width: 0 0 3px 3px;
   opacity: 0;
   transform: all 0.3s;
@@ -105,7 +108,7 @@ a::after {
   right: 12px;
   height: 12px;
   width: 12px;
-  border: 3px solid #102357;
+  border: 3px solid #193581;
   border-width: 3px 3px 0 0;
   opacity: 0;
   transform: all 0.3s;
@@ -153,7 +156,7 @@ a::after {
 
 
 body {
-  font-family: Arial, sans-serif;
+  font-family: "IBM Plex Serif", serif;
   margin: 0;
   padding: 0;
   background-color: #122b43;
