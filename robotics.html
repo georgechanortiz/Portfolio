@@ -30,18 +30,10 @@
   <div class="project-card">
     <img src="Files/RoboticsProjs/1.png" alt="Project 1" />
     <h2>LeRobot Arm Hackathon NYC</h2>
-    <h3>Contributions</h3>
-    <ul>
-      <li>Leader and follower robot had mapped trajectories, so the mechanical and electrical noise could be separated and a 
-          filter could be applied to the electrical noise to reduce trembling and increasing speed by 200%
-      </li>
-      <li>Built and calibrated robot leader and follower, troubleshot hardware issues with motor</li>
-    </ul>
-    <h3>Results</h3>
-    <ul>
-      <li>Won $1000 prize for "Most Innovative Use of Data"</li>
-      <li>Robot can pick up a pen, draw a dollar sign ($), and then place the pen down autonomously using cameravision as feedback</li>
-    </ul>
+    <h4>SO-100 robot arm was built and calibrated. Mechanical and electrical noise were separated, and a filter was applied 
+      to the electrical noise to reduce robot trembling, and we were able to increase trajectory speed by 200%. All done in 
+      a 30-hour window, team won $1000 prize for “Most Innovative Use of Data.” Robot arm demonstrated functionality of 
+      picking up a pen and drawing autonomously, using camera vision as feedback.  </h4>
     <div class="skills-section">
       <h3>Skills</h3>
       <ul class="skills-list">
@@ -54,18 +46,9 @@
   <div class="project-card">
     <img src="Files/RoboticsProjs/2.png" alt="Project 2" />
     <h2>Machine Learning Algorithm - Doosan H2515 Pick and Place</h2>
-    <h3>Contributions</h3>
-    <ul>
-      <li>Trained AI and implemented image processing to identify cubes and return pixel location and color classification. </li>
-      <li>Converted pixel coordinates to numerical inverse kinematic solution for arm navigation</li>
-      <li>Created path planning algorithms for robot arm, built client-server connection with TCP protocol to send commands 
-        for robot to execute</li>
-    </ul>
-    <h3>Results</h3>
-    <ul>
-      <li>Robot able to execute sorting tasks autonomously</li>
-      <li>Algorithm able to identify precise locations of cubes for both building and sorting operations</li>
-    </ul>
+    <h4>Trained ML model to identify cubes, returning pixel location and color class. Pixel coordinates converted into 
+      numerical inverse kinematic solution for arm navigation. Function then used in path planning algorithms, which was 
+      sent via client-server connection with TCP protocol for robot arm to execute. </h4>
     <div class="skills-section">
       <h3>Skills</h3>
       <ul class="skills-list">
@@ -92,16 +75,10 @@
     </div>
 
     <h2>Using Gradient to Compute Min. Norm Pseudoinverse Redundancy Resolution</h2>
-    <h3>Contributions</h3>
-    <ul>
-      <li>Calculated Jacobian and gradient of path, projecting into null space to accomplish secondary objective</li>
-      <li>Simulated robot links and movement, implementing minimum norm pseudoinverse redundancy resolution</li>
-    </ul>
-    <h3>Results</h3>
-    <ul>
-      <li>Robot goes from starting position to follow trajectory, maintaining orthogonality to surface. This is useful 
-        in applications such as welding or writing, where the end effector must maintain a specific angle to the surface</li>
-    </ul>
+    <h4>Jacobian and gradient of path calculated and projected into null space to maintain orthogonality to the surface. 
+      Robot links and movement simulated in MATLAB with min. norm pseudoinverse redundancy resolution algorithm. Robot 
+      orthogonality to surface extremely applicable in welding, writing, or other scenarios which the end effector must 
+      maintain a specific angle to the surface.  </h4>
         <div class="skills-section">
       <h3>Skills</h3>
       <ul class="skills-list">
@@ -114,18 +91,9 @@
   <div class="project-card">
     <img src="Files/RoboticsProjs/5.png" alt="Project 4" />
     <h2>Control and Resolved Rates Simulations in MATLAB</h2>
-    <h3>Contributions</h3>
-    <ul>
-      <li>Implemented cost functions to optimize link speeds for optimization</li>
-      <li>Implemented inverse kinematics for Puma 560 robot to adhere to minimum and maximum speed parameters</li>
-      <li>Simulated robot links and movement in MATLAB using first order interpolation.</li>
-    </ul>
-    <h3>Results</h3>
-    <ul>
-      <li>Closed loop algorithm enabled robot to adhere to constraints within millimeter tolerance in the translational 
-        frame and 0.0524 radians in the rotational frame</li>
-      <li>Gained deeper understanding of robot behavior to predict collision and manage motor speeds</li>
-    </ul>
+    <h4>Cost functions were implemented for link speed optimization. Inverse kinematics via the closed loop algorithm 
+      enabled the robot to adhere to speed constraints (1mm tolerance translational, 0.0524 radians rotational), results
+       simulated in MATLAB via first order interpolation.  </h4>
     <div class="skills-section">
       <h3>Skills</h3>
       <ul class="skills-list">
@@ -139,16 +107,10 @@
     <div class="project-card">
     <img src="Files/RoboticsProjs/SLAMAndRRT.png" alt="Project 1" />
     <h2>RRT and SLAM Implementation for 2D Mobile Robot with Obstacle Avoidance</h2>
-    <h3>Contributions</h3>
-    <ul>
-      <li>Implemented RRT to grow tree until goal was satisfied, then track parent nodes to reveal path</li>
-      <li>Implemented Kalman filter to calculate uncertainty at each discretized timestep (red ellipses)</li>
-    </ul>
-    <h3>Results</h3>
-    <ul>
-      <li>Optimized the algorithm using 100 instances of RRT accross varying optimization parameters, 
-        such as finding the shortest path (left) and minimum uncertainty at the goal region (right)</li>
-    </ul>
+    <h4>RRT grows tree until goal condition reached, then parent nodes tracked back to origin to reveal the path. 
+      SLAM and Kalman filtering was used to calculate the uncertainty (red ellipses) at each time step. 100 instances 
+      were run, and different optimization parameters were analyzed for effectiveness. Shown is shortest path found (left) 
+      and min. uncertainty at goal region (right) </h4>
     <div class="skills-section">
       <h3>Skills</h3>
       <ul class="skills-list">
@@ -167,19 +129,11 @@
   <div class="project-card">
     <img src="Files/RoboticsProjs/7.png" alt="Project 5" />
     <h2>Doosan H2515 Robot Gripper - End Effector</h2>
-      <h3>Contributions</h3>
-      <ul>
-        <li>End effector designed using a gear and hinging mechanism to open and close jaws</li>
-        <li>Arduino sends PWM signal to a motor controller for actuation of jaws, controlled by digital IO on the robot's flange.
-           Allows the jaw actuation to be toggled directly by the teaching pendant interface.
-        </li>
-        <li>Voltage divider circuit constructed to step voltage seen by the Arduino down from the robot flange</li>
-      </ul>
-      <h3>Results</h3>
-      <ul>
-        <li>End effector can be toggled directly from the teaching pendant and programmed to open and close using Doosan Programming Language (DRL)</li>
-        <li>Adjustment of PWM signal sent to controller can be adjusted to hold various sized objects</li>
-      </ul>
+      <h4>Affordable end effector for robot needed to kickstart robotics research in the PROOF Lab. 
+        Gear and hinging mechanism was used to open and close jaws, with PWM signal from Arduino sent to 
+        motor controller to actuate the jaws. Arduino also controlled by digital IO on robot flange to allow jaw 
+        actuation to be toggled directly via the Doosan Programming Language.  </h4>
+
       <div class="skills-section">
         <h3>Skills</h3>
         <ul class="skills-list">
@@ -192,19 +146,11 @@
   <div class="project-card">
     <img src="Files/RoboticsProjs/4.png" alt="Project 6" />
     <h2>SESMA 3.0 - Soft Exosuit for Patients with Spinal Muscular Atrophy</h2>
-      <h3>Contributions</h3>
-      <ul>
-        <li>Recorded positional leg data using 8 markers, then used 3D splines to analyze data and utilize numerical techniques to 
-          discretize data to calculate the change in length of a cable routed down the leg for sit to stand transitions. 
-        </li>
-        <li>Used data and compared with knee torque curves to determine optimal release of clutch mechanism for standing assistance</li>
-        <li>Machined, 3D printed components in functional prototype</li>
-      </ul>
-      <h3>Results</h3>
-      <ul>
-        <li>Achieved 10% knee assistance</li>
-        <li>Timing of mechanism with PID compensation to monitor transitions for real-time feedback and control </li>
-      </ul>
+      <h4>Device helps patients stand independently using cables routed down leg. 8 markers were placed to simulate cable path,
+         and 3D splines were used to simulate a cable. Numerical techniques then used to discretize the data to calculate the 
+         change in length from cable during sit to stand transitions. This was implemented in parallel with PID compensation 
+         to monitor transitions for real-time feedback and autonomous activation when needed. Final Prototype was 3D printed 
+         and machined and delivered 10% knee torque assistance.  </h4>
       <div class="skills-section">
         <h3>Skills</h3>
         <ul class="skills-list">
@@ -217,17 +163,10 @@
   <div class="project-card">
     <img src="Files/RoboticsProjs/8.png" alt="Project 7" />
     <h2>Hand Squeezing Device for Grip Strength Rehabilitation</h2>
-      <h3>Contributions</h3>
-      <ul>
-        <li>Integrated sensors, actuators, and an LCD display using a PIC16F88 microcontroller</li>
-        <li>Wired, debugged system, researching functions in PICBASIC language that could be used to convert analog to digital signal</li>
-        <li>Implemented fourbar linkage system which adjusted the tension of a band placed inside the device</li>
-      </ul>
-      <h3>Results</h3>
-      <ul>
-        <li>LCD display programmed to output repetition count and force output</li>
-        <li>Potentiometer successfully controlled servo connected to fourbar linkage, adjusting force as desired</li>
-      </ul>
+      <h4>Hand squeezer device with adjustable force. A four-bar linkage adjusts the tension of a band in the device controlled
+         through a potentiometer. PIC16F88 microcontroller was used to control LCD display, read sensors, and control actuators, 
+         programmed and debugged in PICBasic Pro language.  </h4>
+
       <div class="skills-section">
         <h3>Skills</h3>
         <ul class="skills-list">

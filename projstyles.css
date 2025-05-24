@@ -295,13 +295,6 @@ ul li::marker, ol li::marker {
     text-align: center;
 }
 
-h3 {
-    margin: 1rem 1rem 0.5rem;
-    margin-left: 2rem;
-    font-size: 1.25rem;
-    color: #ffffff;
-    font-style: italic;
-}
 
 /* Skills list styles for robotics.html */
 .skills-list {
@@ -355,5 +348,20 @@ h3 {
   border: 0;
 }
 
+h3 {
+    margin: 1rem 1rem 0.5rem;
+    margin-left: 2rem;
+    font-size: 1.5rem;
+    color: #ffffff;
+    text-decoration: underline;
+}
 
 
+h4 {
+    font-family: "Calibri", sans-serif;
+    margin: 1rem 1rem 0.5rem;
+    margin-left: 2rem;
+    font-size: 1.25rem;
+    color: #ffffff;
+
+}
