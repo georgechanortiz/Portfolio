@@ -516,6 +516,7 @@ h5 {
   display: inline-block;
   white-space: nowrap;
   margin-bottom: 0.5em;
+  margin-left: 0.2em;
 }
 
 #work .experience-list li:hover {
