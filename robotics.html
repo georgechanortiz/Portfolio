@@ -8,13 +8,24 @@
   <title>Robotics Projects</title>
   
 </head>
+
 <body>
   <header>
     <ul>
       <li><a href="index.html">Home</a></li>
+      <li><a href="woodworking.html">Misc Projects</a></li>
+      <li><a href="resume.html">Resume</a></li>
     </ul>
   </header>
   <h1>Robotics Projects</h1>
+    <section id="about">
+    <p>
+      A few of my robotics projects. Started off in the PROOF Lab and learning with a hands-on approach, then moved onto the math 
+      that explained how it all worked (or didn't). Some of these projects are research-driven, some built under extremely 
+      tight deadlines, and some are just for fun. All my projects pushed me to think harder, build smarter, and occasionally yell at 
+      my computer. 
+    </p>
+  </section>
 <section class="projects">
   <div class="project-card">
     <img src="Files/RoboticsProjs/1.png" alt="Project 1" />
@@ -124,6 +135,35 @@
       </ul>
     </div>
   </div>
+
+    <div class="project-card">
+    <img src="Files/RoboticsProjs/SLAMAndRRT.png" alt="Project 1" />
+    <h2>RRT and SLAM Implementation for 2D Mobile Robot with Obstacle Avoidance</h2>
+    <h3>Contributions</h3>
+    <ul>
+      <li>Implemented RRT to grow tree until goal was satisfied, then track parent nodes to reveal path</li>
+      <li>Implemented Kalman filter to calculate uncertainty at each discretized timestep (red ellipses)</li>
+    </ul>
+    <h3>Results</h3>
+    <ul>
+      <li>Optimized the algorithm using 100 instances of RRT accross varying optimization parameters, 
+        such as finding the shortest path (left) and minimum uncertainty at the goal region (right)</li>
+    </ul>
+    <div class="skills-section">
+      <h3>Skills</h3>
+      <ul class="skills-list">
+        <li>RRT</li>
+        <li>Kalman Filter</li> 
+        <li>SLAM</li>
+        <li>MATLAB</li>
+        <li>Path Planning</li>
+        <li>Obstacle Avoidance</li> 
+        
+      </ul>
+    </div>
+  </div>
+
+
   <div class="project-card">
     <img src="Files/RoboticsProjs/7.png" alt="Project 5" />
     <h2>Doosan H2515 Robot Gripper - End Effector</h2>
