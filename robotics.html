@@ -1,203 +1,174 @@
 <!DOCTYPE html>
+
+
 <html lang="en">
-<link rel="stylesheet" href="projstyles.css" />
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>George Ortiz Projects</title>
+        <link rel="stylesheet" href="stylestabs.css">
+    </head>
+    <body>
+        <header>
+            <ul>
+                <li><a href="index.html">home</a></li>
+                <li><a href="woodworking.html">side quests</a></li>
+                <li><a href="resume.html">resume</a></li>
+            </ul>
+        </header>
+            
+        <h1>Robotics Projects</h1>
+            <section class="projects">
+            <div class="project-card">
+                <img src="Files/RoboticsProjs/1.png" alt="Project 1" class="image"/>
+                <h2>LeRobot Arm Hackathon NYC - SO-100</h2>
+                <h4>After construction, calibration, and data collection, the mechanical and electrical noise were separated before training. 
+                    Applying a low pass filter to the electrical noise reduced joint trembling, and increasing the frame rate boosted trajectory 
+                    speeds by 200%. My team won the $1,000 prize for the “Most Innovative Use of Data.” SO-100 can pick up a pen and draw
+                    autonomously while using camera vision as feedback.</h4>
+                <div class="skills-section">
 
-  <title>Robotics Projects</title>
-  
-</head>
+                <ul class="skills-list">
+                    <li>Action Chunking Transformer (ACT) Policy</li>
+                    <li>Signal Processing</li>
+                    <li>Machine Learning</li>
+                    <li>Optimization</li>
+                    <li>Vision Feedback</li>
+                </ul>
+                </div>
+            </div>
+            <div class="project-card">
+                <img src="Files/RoboticsProjs/2.png" alt="Project 2" class="image"/>
+                <h2>Machine Learning Algorithm - Doosan H2515 Pick and Place</h2>
+                <h4>Trained ML model to identify cubes, returning pixel location and color class. Pixel coordinates converted into 
+                numerical inverse kinematic solution for arm navigation. Function then used in path planning algorithms, which was 
+                sent via client-server connection with TCP protocol for robot arm to execute. </h4>
+                <div class="skills-section">
 
-<body>
-  <header>
-    <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="woodworking.html">Misc Projects</a></li>
-      <li><a href="resume.html">Resume</a></li>
-    </ul>
-  </header>
-  <h1>Robotics Projects</h1>
-    <section id="about">
-    <p>
-      Some of my best robotics projects. I started off in the PROtotype Object Fabrication (PROOF) Lab, learning with a hands-on 
-      approach. I then delved into the linear algebra that explained how it all worked. Some of my projects are research-driven, some built under extremely 
-      tight deadlines, and some are just for fun. All of my projects have pushed me to think harder, build smarter, and 
-      occasionally question my life choices. 
-    </p>
-  </section>
-<section class="projects">
-  <div class="project-card">
-    <img src="Files/RoboticsProjs/1.png" alt="Project 1" />
-    <h2>LeRobot Arm Hackathon NYC</h2>
-    <h4>SO-100 robot arm was built and calibrated. Mechanical and electrical noise were separated, and a filter was applied 
-      to the electrical noise to reduce robot trembling, and we were able to increase trajectory speed by 200%. All done in 
-      a 30-hour window, team won $1000 prize for “Most Innovative Use of Data.” Robot arm demonstrated functionality of 
-      picking up a pen and drawing autonomously, using camera vision as feedback.  </h4>
-    <div class="skills-section">
-      <h3>Skills</h3>
-      <ul class="skills-list">
-        <li>Action Chunking Transformer (ACT) Policy</li>
-        <li>Data Filtering</li>
-        <li>Machine Learning</li>
-      </ul>
-    </div>
-  </div>
-  <div class="project-card">
-    <img src="Files/RoboticsProjs/2.png" alt="Project 2" />
-    <h2>Machine Learning Algorithm - Doosan H2515 Pick and Place</h2>
-    <h4>Trained ML model to identify cubes, returning pixel location and color class. Pixel coordinates converted into 
-      numerical inverse kinematic solution for arm navigation. Function then used in path planning algorithms, which was 
-      sent via client-server connection with TCP protocol for robot arm to execute. </h4>
-    <div class="skills-section">
-      <h3>Skills</h3>
-      <ul class="skills-list">
-        <li>OpenCV</li>
-        <li>YOLOv8</li>
-        <li>DRL Programming Language</li>
-        <li>Python</li>
-        <li>Path Planning</li>
-        <li>Pick and Place</li>
-      </ul>
-    </div>
-  </div>
+                <ul class="skills-list">
+                    <li>OpenCV</li>
+                    <li>YOLOv8</li>
+                    <li>DRL Programming Language</li>
+                    <li>Python</li>
+                    <li>Path Planning</li>
+                    <li>Pick and Place</li>
+                </ul>
+                </div>
+            </div>
 
-  <div class="project-card">
-    <div class="video-container">
-      <iframe 
-        src="https://www.youtube.com/embed/m14FWpo8iBI?autoplay=1&mute=1&loop=1&playlist=m14FWpo8iBI&controls=0&modestbranding=1&showinfo=0&rel=0"
-        title="YouTube video"
-        frameborder="0"
-        allow="autoplay; encrypted-media"
-        allowfullscreen>
-      </iframe>
-      
-    </div>
+            <div class="project-card">
+                <div class="video-container">
+                <iframe 
+                    src="https://www.youtube.com/embed/m14FWpo8iBI?autoplay=1&mute=1&loop=1&playlist=m14FWpo8iBI&controls=0&modestbranding=1&showinfo=0&rel=0"
+                    title="YouTube video"
+                    frameborder="0"
+                    allow="autoplay; encrypted-media"
+                    allowfullscreen>
+                </iframe>
+                
+                </div>
 
-    <h2>Using Gradient to Compute Min. Norm Pseudoinverse Redundancy Resolution</h2>
-    <h4>Jacobian and gradient of path calculated and projected into null space to maintain orthogonality to the surface. 
-      Robot links and movement simulated in MATLAB with min. norm pseudoinverse redundancy resolution algorithm. Robot 
-      orthogonality to surface extremely applicable in welding, writing, or other scenarios which the end effector must 
-      maintain a specific angle to the surface.  </h4>
-        <div class="skills-section">
-      <h3>Skills</h3>
-      <ul class="skills-list">
-        <li>MATLAB</li>
-        <li>Jacobian</li>
-        <li>Resolved Rates</li>
-      </ul>
-    </div>
-  </div>
-  <div class="project-card">
-    <img src="Files/RoboticsProjs/5.png" alt="Project 4" />
-    <h2>Control and Resolved Rates Simulations in MATLAB</h2>
-    <h4>Cost functions were implemented for link speed optimization. Inverse kinematics via the closed loop algorithm 
-      enabled the robot to adhere to speed constraints (1mm tolerance translational, 0.0524 radians rotational), results
-       simulated in MATLAB via first order interpolation.  </h4>
-    <div class="skills-section">
-      <h3>Skills</h3>
-      <ul class="skills-list">
-        <li>Cost Functions</li>
-        <li>Resolved Rates</li>
-        <li>MATLAB</li>
-      </ul>
-    </div>
-  </div>
+                <h2>Using Gradient to Compute Min. Norm Pseudoinverse Redundancy Resolution</h2>
+                <h4>Jacobian and gradient of path calculated and projected into null space to maintain orthogonality to the surface. 
+                Robot links and movement simulated in MATLAB with min. norm pseudoinverse redundancy resolution algorithm. Maintaining orthogonality to the 
+                surface is extremely applicable in welding or writing.  </h4>
+                    <div class="skills-section">
 
-    <div class="project-card">
-    <img src="Files/RoboticsProjs/SLAMAndRRT.png" alt="Project 1" />
-    <h2>RRT and SLAM Implementation for 2D Mobile Robot with Obstacle Avoidance</h2>
-    <h4>RRT grows tree until goal condition reached, then parent nodes tracked back to origin to reveal the path. 
-      SLAM and Kalman filtering was used to calculate the uncertainty (red ellipses) at each time step. 100 instances 
-      were run, and different optimization parameters were analyzed for effectiveness. Shown is shortest path found (left) 
-      and min. uncertainty at goal region (right) </h4>
-    <div class="skills-section">
-      <h3>Skills</h3>
-      <ul class="skills-list">
-        <li>RRT</li>
-        <li>Kalman Filter</li> 
-        <li>SLAM</li>
-        <li>MATLAB</li>
-        <li>Path Planning</li>
-        <li>Obstacle Avoidance</li> 
-        
-      </ul>
-    </div>
-  </div>
+                <ul class="skills-list">
+                    <li>MATLAB</li>
+                    <li>Jacobian</li>
+                    <li>Resolved Rates</li>
+                </ul>
+                </div>
+            </div>
+            <div class="project-card">
+                <img src="Files/RoboticsProjs/5.png" alt="Project 4" class="image"/>
+                <h2>Control and Resolved Rates Simulations in MATLAB</h2>
+                <h4>Cost functions were implemented for link speed optimization. Inverse kinematics via the closed loop algorithm 
+                enabled the robot to adhere to speed constraints (1mm tolerance translational, 0.0524 radians rotational), results
+                simulated in MATLAB via first order interpolation.  </h4>
+                <div class="skills-section">
+
+                <ul class="skills-list">
+                    <li>Cost Functions</li>
+                    <li>Resolved Rates</li>
+                    <li>MATLAB</li>
+                </ul>
+                </div>
+            </div>
+
+                <div class="project-card">
+                <img src="Files/RoboticsProjs/SLAMAndRRT.png" alt="Project 1" class="image"/>
+                <h2>RRT and SLAM Implementation for 2D Mobile Robot with Obstacle Avoidance</h2>
+                <h4>RRT grows tree until goal condition reached, then parent nodes tracked back to origin to reveal the path. 
+                SLAM and Kalman filtering was used to calculate the uncertainty (red ellipses) at each time step. 100 instances 
+                were run, and different optimization parameters were analyzed for effectiveness. Shown is shortest path found (left) 
+                and min. uncertainty at goal region (right) </h4>
+                <div class="skills-section">
+
+                <ul class="skills-list">
+                    <li>RRT</li>
+                    <li>Kalman Filter</li> 
+                    <li>SLAM</li>
+                    <li>MATLAB</li>
+                    <li>Path Planning</li>
+                    <li>Obstacle Avoidance</li> 
+                    
+                </ul>
+                </div>
+            </div>
 
 
-  <div class="project-card">
-    <img src="Files/RoboticsProjs/7.png" alt="Project 5" />
-    <h2>Doosan H2515 Robot Gripper - End Effector</h2>
-      <h4>Affordable end effector for robot needed to kickstart robotics research in the PROOF Lab. 
-        Gear and hinging mechanism was used to open and close jaws, with PWM signal from Arduino sent to 
-        motor controller to actuate the jaws. Arduino also controlled by digital IO on robot flange to allow jaw 
-        actuation to be toggled directly via the Doosan Programming Language.  </h4>
+            <div class="project-card">
+                <img src="Files/RoboticsProjs/7.png" alt="Project 5" class="image"/>
+                <h2>Doosan H2515 Robot Gripper - End Effector</h2>
+                <h4>Affordable end effector for robot needed to kickstart robotics research in the PROOF Lab. 
+                    Gear and hinging mechanism was used to open and close jaws, with PWM signal from Arduino sent to 
+                    motor controller to actuate the jaws. Arduino also controlled by digital IO on robot flange to allow jaw 
+                    actuation to be toggled directly via the Doosan Programming Language.  </h4>
 
-      <div class="skills-section">
-        <h3>Skills</h3>
-        <ul class="skills-list">
-          <li>SolidWorks</li>
-          <li>Mechatronics</li>
-          <li>3D Printing</li>
-        </ul>
-      </div>
-  </div>
-  <div class="project-card">
-    <img src="Files/RoboticsProjs/4.png" alt="Project 6" />
-    <h2>SESMA 3.0 - Soft Exosuit for Patients with Spinal Muscular Atrophy</h2>
-      <h4>Device helps patients stand independently using cables routed down leg. 8 markers were placed to simulate cable path,
-         and 3D splines were used to simulate a cable. Numerical techniques then used to discretize the data to calculate the 
-         change in length from cable during sit to stand transitions. This was implemented in parallel with PID compensation 
-         to monitor transitions for real-time feedback and autonomous activation when needed. Final Prototype was 3D printed 
-         and machined and delivered 10% knee torque assistance.  </h4>
-      <div class="skills-section">
-        <h3>Skills</h3>
-        <ul class="skills-list">
-          <li>CNC programming and machining</li>
-          <li>PID compensation</li>
-          <li>3D splines</li>
-        </ul>
-      </div>
-  </div>
-  <div class="project-card">
-    <img src="Files/RoboticsProjs/8.png" alt="Project 7" />
-    <h2>Hand Squeezing Device for Grip Strength Rehabilitation</h2>
-      <h4>Hand squeezer device with adjustable force. A four-bar linkage adjusts the tension of a band in the device controlled
-         through a potentiometer. PIC16F88 microcontroller was used to control LCD display, read sensors, and control actuators, 
-         programmed and debugged in PICBasic Pro language.  </h4>
+                <div class="skills-section">
 
-      <div class="skills-section">
-        <h3>Skills</h3>
-        <ul class="skills-list">
-          <li>PICBasic Pro</li>
-          <li>Mechatronics</li>
-          <li>Fourbar Linkage</li>
-        </ul>
-      </div>
-  </div>
-</section>
+                    <ul class="skills-list">
+                    <li>SolidWorks</li>
+                    <li>Mechatronics</li>
+                    <li>3D Printing</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="project-card">
+                <img src="Files/RoboticsProjs/4.png" alt="Project 6" class="image"/>
+                <h2>SESMA 3.0 - Soft Exosuit for Patients with Spinal Muscular Atrophy</h2>
+                <h4>Device helps patients stand independently using cables routed down leg. 8 markers were placed to simulate cable path,
+                    and 3D splines were used to simulate a cable. Numerical techniques then used to discretize the data to calculate the 
+                    change in length from cable during sit to stand transitions. This was implemented in parallel with PID compensation 
+                    to monitor transitions for real-time feedback and autonomous activation when needed. Final Prototype was 3D printed 
+                    and machined and delivered 10% knee torque assistance.  </h4>
+                <div class="skills-section">
 
-</body>
-</html>
+                    <ul class="skills-list">
+                    <li>CNC programming and machining</li>
+                    <li>PID compensation</li>
+                    <li>3D splines</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="project-card">
+                <img src="Files/RoboticsProjs/8.png" alt="Project 7" class="image"/>
+                <h2>Hand Squeezing Device for Grip Strength Rehabilitation</h2>
+                <h4>Hand squeezer device with adjustable force. A four-bar linkage adjusts the tension of a band in the device controlled
+                    through a potentiometer. PIC16F88 microcontroller was used to control LCD display, read sensors, and control actuators, 
+                    programmed and debugged in PICBasic Pro language.  </h4>
 
-<!--
-<h3>Contributions</h3>
-<ul>
-  <li></li>
-  <li></li>
-</ul>
-<h3>Results</h3>
-<ul>
-  <li></li>
-  <li></li>
-</ul>
-<div class="skills-section">
-  <h3>Skills</h3>
-  <ul class="skills-list">
-    <li></li>
-    <li></li>
-    <li></li>
-  </ul>
-</div>
--->
+                <div class="skills-section">
+
+                    <ul class="skills-list">
+                    <li>PICBasic Pro</li>
+                    <li>Mechatronics</li>
+                    <li>Fourbar Linkage</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </body>
+</html> 

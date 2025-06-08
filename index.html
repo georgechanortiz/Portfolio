@@ -1,144 +1,166 @@
 <!DOCTYPE html>
+
+<script src="script.js"></script>
+
 <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>George Ortiz Portfolio</title>
+        <link rel="stylesheet" href="styles.css">
+    </head>
 
+    <body>
+        <header>
+            <ul>
+                <li><a href="robotics.html">robotics</a></li>
+                <li><a href="woodworking.html">side quests</a></li>
+                <li><a href="resume.html">resume</a></li>
+            </ul>
+        </header>
 
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>George Ortiz</title>
-    <link rel="stylesheet" href="styles.css" />
-  </head>
+        <section class="hero">
+        
+        <div class="hero-text">
+            <div class="typing-banner"><h1 id="typed-text">Hey! I'm George Ortiz</h1></div>
+            <div class="additional-text">Robotics Engineer ◇ Queens, NYC</div>
+            <div class="icon-container">
+            
+                <a href="https://github.com/thewoodman20" target="_blank" title="GitHub"><img src="Files/Icons/Github.png" alt="GitHub" class="icon github-icon"></a>
+                <a href="https://www.linkedin.com/in/george-ortiz-12120420b/" target="_blank" title="LinkedIn"><img src="Files/Icons/Linkedin.png" alt="linkedin" class="icon discord-icon"></a>
+                <a href="mailto:georgechan930@gmail.com" title="Email"><img src="Files/Icons/Mail.png" alt="Email" class="icon email-icon"></a>
+                <a href="resume.html" class="resume-link">Resume</a>
 
-
-  <body>
-    <header>
-      <ul>
-        <li><a href="robotics.html">Robotics Projects</a></li>
-        <li><a href="woodworking.html">Misc Projects</a></li>
-        <li><a href="resume.html">Resume</a></li>
-      </ul>
-    </header>
-    <!-- Typing Effect and top section-->
-    <section class="hero">
-      <img src="Files/ProfPic.png" alt="George Ortiz Profile Picture" class="hero-image" />
-      <div class="hero-text">
-        <div class="typing-banner"><h1 id="typed-text"></h1></div>
-        <div id="additional-text">Robotics ◇ Queens, NY</div>
-        <div class="icon-container">
-          <a href="https://github.com/thewoodman20" target="_blank" title="GitHub"><img src="Files/Icons/Github.png" alt="GitHub" class="github"></a>
-          <a href="https://www.linkedin.com/in/george-ortiz-12120420b/" target="_blank" title="LinkedIn"><img src="Files/Icons/Linkedin.png" alt="linkedin" class="linkedin"></a>
-          <a href="mailto:georgechan930@gmail.com" title="Email"><img src="Files/Icons/Mail.png" alt="Email" class="email"></a>
+            </div>
+            <section class="about">
+                <div class="about">
+                    <p>Mechanical Engineering grad pursuing a Master’s at CMU with a focus on robotics.</p>
+                    <p>If you’re building something cool in robotics, electronics, or embedded systems, I’d love to hear about it. Shoot me a message. </p>
+                </div>
+            </section>
         </div>
-      </div>
-    </section>
-    <!-- Portfolio Header -->
-    <!-- About Section -->
-    <section id="about">
-      <h2>About Me</h2>
-      <p>
-        Born in Queens, currently pursuing a Master’s at CMU. These days, I’m diving deep into robotics research and tracking where the resources and most exciting challenges are at.
-      </p>
-
-      <p>If you’re building something in or around robotics, electronics, or code — especially if it’s crazy — I’d love to hear 
-        about it. DM me on LinkedIn or shoot me an email. Let’s connect.</p>
-      
-    </section>
-
-    <!-- Projects Section -> change this to the work experiences section -->
-    <section id="education">
-      <h3>Education</h3>
-      <div class="education-list">
-          <h4>Carnegie Mellon University</h4>
-          <h5>2025 - 2027 | M.S in Mechanical Engineering - Research</h5>
-          <h4>Stevens Institute of Technology</h4>
-          <h5>2020 - 2025 | GPA: 3.75 | B.S in Mechanical Engineering, Robotics Concentration | Dean's List | CO-OP Program</h5>
-      </div>
-    </section>
-
-
-<section id="work">
-  <h3>Work Experience</h3>
-  <div class="experience-info">
-    <div class="experience-listing">
-      <h4>Stevens Institute of Technology</h4>
-      <h5>Spring 2023 – Spring 2025 | Robotics Researcher</h5>
-      <ul class="experience-list">
-        <li>Python</li>
-        <li>3D Printing</li>
-        <li>Doosan H2515</li>
-        <li>Mechatronics</li>
-        <li>Prototyping and Testing</li>
-      </ul>
-
-      <h5>Summer 2023 | Materials Processing Researcher</h5>
-      <ul class="experience-list">
-        <li>Scanning Electron Microscopy</li>
-        <li>Spectrophotometry</li>
-        <li>Poster Presentation at ASEE MAS 2023</li>
-      </ul>
-
-      <h4>Zimmer Biomet Holdings</h4>
-      <h5>Summer 2024 | Manufacturing Engineer Intern</h5>
-      <ul class="experience-list">
-        <li>Fixture Design and Modeling</li>
-        <li>Siemens NX</li>
-        <li>Power BI</li>
-        <li>Lean Manufacturing</li>
-      </ul>
-
-      <h5>Fall 2023 | Quality Engineer Co-op</h5>
-      <ul class="experience-list">
-        <li>A3 Problem Solving</li>
-        <li>Redlining</li>
-        <li>Document Routing</li>
-        <li>QSR Updates</li>
-        <li>Root Cause Analysis</li>
-      </ul>
-
-      <h4>New Line Structures</h4>
-      <h5>Fall 2022 | Assistant Project Manager Co-op</h5>
-      <ul class="experience-list">
-        <li>Change Order Processing</li>
-        <li>Cost and Labor Estimation</li>
-        <li>Coordination of Pricing and Delivery</li>
-      </ul>
-
-      <h5>Spring 2022 | Project Engineer Co-op</h5>
-      <ul class="experience-list">
-        <li>HVAC Visual Inspections</li>
-        <li>Excel Tracking Optimization</li>
-        <li>Document Control</li>
-        <li>Paperwork Organization</li>
-      </ul>
-    </div>
-  </div>
-</section>
+        <img src="Files/headshot.jpg" alt="George Ortiz Profile Picture" class="hero-image" />
+        </section>
 
 
 
-    <!-- Contact Section -->
-<section id="contact">
-  <div>
-    <h2>Contact Info</h2>
-  </div>
-  <div class="contact-links">
-    <ul>
-      <li><a href="mailto:georgechan930@gmail.com" title="Email">Email</a></li>
-      <li><a href="https://www.linkedin.com/in/george-ortiz-12120420b/" target="_blank">LinkedIn</a></li>
-      <li><a href="https://github.com/thewoodman20" target="_blank">GitHub</a></li>
-    </ul>
-  </div>
-</section>
 
 
+        <!-- Tab links -->
+        <div class="tab">
+            <button class="tablinks" onclick="Tabs(event, 'Work Experience')" id="defaultOpen">Work Experience</button>
+            <button class="tablinks" onclick="Tabs(event, 'Education')" >Education</button>
+        </div>
 
-    
-    <footer>
-      <p>&copy; 2025 George Ortiz. All rights reserved.</p>
-    </footer>
+        <!-- Tab content -->
+        <div id="Education" class="tabcontent">
+        <section id="education">
+            <div class="education-entry">
+                <img src="Files/Icons/cmu.png" alt="cmuicon" class="educationicon"/>
+                <div class="education-text">
+                    <div class="schoolname">Carnegie Mellon University</div>
+                    <div class="education-info">2025 - 2027 | M.S in Mechanical Engineering - Research</div>   
+                </div>
+            </div>  
 
-    <script src="script.js"></script>
-  
-  
-  </body>
+            <div class="education-entry">
+                <img src="Files/Icons/stevens.png" alt="steveicon" class="educationicon"/>
+                <div class="education-text">
+                    <div class="schoolname">Stevens Institute of Technology</div>
+                    <div class="education-info">2020 - 2025 | GPA: 3.75 | B.S in Mechanical Engineering, Robotics Concentration | Dean's List | CO-OP Program</div>
+                </div>
+            </div>
+        </section>
+        </div>
+
+
+        <div id="Work Experience" class="tabcontent">
+        <section id="work">
+            <div class="work-entry">
+            <img src="Files/Icons/stevens.png" alt="steveicon" class="workicon"/>
+            <div class="work-text">
+                <h4>Stevens Institute of Technology</h4>
+                <h5>Spring 2023 – Spring 2025 | Robotics Engineer Researcher | PROOF Lab</h5>
+                <ul class="experience-list">
+                    <li>Python</li>
+                    <li>3D Printing</li>
+                    <li>Doosan H2515</li>
+                    <li>Mechatronics</li>
+                    <li>Prototyping and Testing</li>
+                </ul>
+                <h5>Summer 2023 | Materials Processing Researcher</h5>
+                <ul class="experience-list">
+                    <li>Scanning Electron Microscopy</li>
+                    <li>Spectrophotometry</li>
+                    <li>ASEE MAS 2023 Poster Session</li>
+                </ul>
+            </div>
+            </div>
+
+            <div class="work-entry">
+            <img src="Files/Icons/zimmer.png" alt="zimmericon" class="workicon"/>
+            <div class="work-text">
+                <h4>Zimmer Biomet Holdings</h4>
+                <h5>Summer 2024 | Manufacturing Engineer Intern</h5>
+                <ul class="experience-list">
+                    <li>Fixture Design and Modeling</li>
+                    <li>Siemens NX</li>
+                    <li>Power BI</li>
+                    <li>Lean Manufacturing</li>
+                </ul>
+                <h5>Fall 2023 | Quality Engineer Co-op</h5>
+                <ul class="experience-list">
+                    <li>A3 Problem Solving</li>
+                    <li>Redlining</li>
+                    <li>Document Routing</li>
+                    <li>QSR Updates</li>
+                    <li>Root Cause Analysis</li>
+                </ul>
+            </div>
+            </div>
+
+            <div class="work-entry">
+            <img src="Files/Icons/newlinestructures.png" alt="nlsicon" class="workicon"/>
+            <div class="work-text">
+                <h4>New Line Structures</h4>
+                <h5>Fall 2022 | Assistant Project Manager Co-op</h5>
+                <ul class="experience-list">
+                <li>CO Processing</li>
+                <li>Cost and Labor Estimation</li>
+                <li>Logistics</li>
+                </ul>
+                <h5>Spring 2022 | Project Engineer Co-op</h5>
+                <ul class="experience-list">
+                <li>HVAC Visual Inspections</li>
+                <li>Excel Optimization</li>
+                <li>Doc Control</li>
+                </ul>
+            </div>
+            </div>
+        </section>
+        </div>        
+
+        <footer>
+        <section id="contact">
+        <div>
+            <h2>Contact Info</h2>
+        </div>
+        <div class="contactlinks">
+            <ul>
+                <li><a href="mailto:georgechan930@gmail.com" title="Email">Email</a></li>
+                <li><a href="https://www.linkedin.com/in/george-ortiz-12120420b/" target="_blank">LinkedIn</a></li>
+                <li><a href="https://github.com/thewoodman20" target="_blank">GitHub</a></li>
+            </ul>
+        </div>
+        </section>
+        <p>&copy; 2025 George Ortiz. All rights reserved.</p>
+        <div class="attributions">
+            <ul>
+                <li><a href="https://www.freepik.com/search">Icon by Peter Lakenbrink</a></li>
+                <li><a href="https://www.freepik.com/icon/linkedin_1384088#fromView=search&page=1&position=23&uuid=9441eb9c-2928-4a6a-9bee-eca3067c7dc7">Icon by Freepik</a></li>
+                <li><a href="https://www.freepik.com/icon/github_1051377#fromView=search&page=1&position=17&uuid=21d6b3ac-069c-4fc3-9fa7-b9da8023287d">Icon by Freepik</a></li>
+            </ul>
+        </div>
+        </footer>
+    </body>
 </html>
