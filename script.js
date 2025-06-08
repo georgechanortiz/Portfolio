@@ -1,13 +1,22 @@
-const text = "George Ortiz"; // Replace this with your name
-const typingSpeed = 100; // milliseconds per letter
-let i = 0;
+function Tabs(evt, Tabs) {
+  // Source - https://www.w3schools.com/howto/howto_js_tabs.asp
+  var i, tabcontent, tablinks;
 
-function typeWriter() {
-  if (i < text.length) {
-    document.getElementById("typed-text").innerHTML += text.charAt(i);
-    i++;
-    setTimeout(typeWriter, typingSpeed);
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
   }
+
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+
+  document.getElementById(Tabs).style.display = "block";
+  evt.currentTarget.className += " active";
 }
 
-window.onload = typeWriter;
+
+document.addEventListener("DOMContentLoaded", function () {
+  document.getElementById("defaultOpen").click();
+});
