@@ -1,11 +1,30 @@
+
+.anek-devanagari {
+  font-family: "Anek Devanagari", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 200;
+  font-style: bold;
+  font-variation-settings:
+    "width" 100;
+}
+.epilogue {
+  font-family: "Epilogue", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+}
+
+
 html, body {
   margin: 0;
   padding: 0;
-  background-color: #000000;
-  color: #ffffff;
-  font-family: "Calibri", serif;
+  background-color: #202020;
+  color: #000000;
+  /* font-family: "Raleway", serif; */
+  font-family: "Epilogue", sans-serif;
   line-height: 1.6;
 }
+
 
 /* link styles */
 a {
@@ -14,13 +33,14 @@ a {
 
 /* header styles */
 header {
-  font-family: "Calibri", sans-serif;
+  /* font-family: "Raleway", sans-serif; */
+  font-family: "Anek Devanagari", sans-serif;
   position: sticky;
   top: 0;
   left: 0;
   width: 100vw;
   z-index: 1000;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(46, 46, 46, 0.68);
   backdrop-filter: blur(8px);
   opacity: 1;
   padding: 1rem 2rem;
@@ -33,14 +53,15 @@ header ul {
   display: flex;
   list-style-type: none;
   justify-content: center;
-
 }
 
+
+
 header ul li a {
-  color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
   font-size: 20px;
   text-decoration: none;
-  color: #949494;
+  color: #ffffff;
   padding: 5px 10px;
   margin: 0px 0px;
   position: relative;
@@ -49,7 +70,7 @@ header ul li a {
 }
 
 a:hover {
-  color: white;
+  color: rgb(0, 157, 255);
   transform: translateY(-3px);
   border-radius: 1.2rem;
   
@@ -79,23 +100,25 @@ a::after {
 /* end of header styles */
 
 
+
+
+
+
 /* hero and about */
 .hero {
   display: flex;
   flex-direction: row; 
   align-items: center;  
   justify-content: center; 
-  gap: 2rem; 
+  gap: 1rem; 
   min-height: 30vh;
   text-align: left;
-  padding: 2rem;
+  padding: 1rem;
   flex-wrap: wrap; 
   max-width: 700px;
   margin: auto;
   margin-top: 4rem;
-  border: 1px solid #333; 
   border-radius: 10px;
-  background-color: #000000;
 }
 
 
@@ -103,18 +126,20 @@ a::after {
   width: 200px;
   height: auto;
   max-width: 100%;
-  border-radius: 10px;
+  border-radius: 12px;
   margin-left: 2rem;
 }
 
 .hero h1 {
   font-size: 2.5em;
   margin: 0;
+  font-family: "Anek Devanagari", sans-serif;
+  color: #ffffff;
 }
 
 .additional-text {
   font-size: 1.2em;
-  color: #cccccc;
+  color: #ccc;
   margin-top: 0rem;
 }
 
@@ -138,26 +163,51 @@ a::after {
 
 
 .github-icon {
-  filter: invert(16%) sepia(97%) saturate(7492%) hue-rotate(358deg) brightness(97%) contrast(119%);
+
   transition: filter 0.3s ease;
 }
 
-.discord-icon {
-  filter: invert(34%) sepia(99%) saturate(7492%) hue-rotate(196deg) brightness(97%) contrast(119%);
+
+.linkedin-icon {
+  filter: brightness(0) saturate(100%)
+          invert(100%) sepia(0%) saturate(0%)
+          hue-rotate(0deg) brightness(100%) contrast(100%);
   transition: filter 0.3s ease;
 }
 
 .email-icon {
-  filter: invert(84%) sepia(97%) saturate(7492%) hue-rotate(1deg) brightness(97%) contrast(119%);
+  filter: brightness(0) saturate(100%)
+          invert(100%) sepia(0%) saturate(0%)
+          hue-rotate(0deg) brightness(100%) contrast(100%);
   transition: filter 0.3s ease;
 }
 
 
+.linkedin-icon:hover {
+  filter: brightness(0) saturate(100%)
+          invert(46%) sepia(95%) saturate(7478%)
+          hue-rotate(191deg) brightness(102%) contrast(102%);
+}
+
+.email-icon:hover {
+  filter: brightness(0) saturate(100%)
+          invert(46%) sepia(95%) saturate(7478%)
+          hue-rotate(191deg) brightness(102%) contrast(102%);
+}
+
+.github-icon:hover {
+  filter: brightness(0) saturate(100%)
+          invert(46%) sepia(95%) saturate(7478%)
+          hue-rotate(191deg) brightness(102%) contrast(102%);
+}
+
+
+
 .resume-link {
-  color: greenyellow;
+  color: rgb(255, 255, 255);
   text-decoration: none;
   padding: 0.25rem 1rem;
-  border: 2px solid greenyellow;
+  border: 2px solid rgb(255, 255, 255);
   border-radius: 10px;
   margin-bottom: 0.5rem;
   margin-left: 1rem;
@@ -166,18 +216,14 @@ a::after {
 .resume-link:hover {
   transition: transform 0.2s ease, opacity 0.2s ease;
   cursor: pointer;
-  border: 2px solid greenyellow;
+  border: 2px solid rgb(0, 157, 255);
   border-radius: 10px;
-  background-color: #252525;
+  background-color: #3b3b3b;
 }
-
-
-
-
 
 .about {
   width: 100%;
-  max-width: 400px;
+  max-width: 450px;
   margin: 0 auto 0 auto;
   box-sizing: border-box;
   display: flex;
@@ -190,7 +236,7 @@ a::after {
 .about p {
   margin-top: 0.4rem;
   margin-bottom: 0.4rem;
-  font-size: 1rem;
+  font-size: 0.9rem;
   line-height: 1.6;
   color: #ffffff;
 }
@@ -199,8 +245,13 @@ a::after {
 
 
 
+
+
+
+
+
 /* tabs */
-.tab {
+/* .tab {
   display: flex;
   justify-content: center;
   flex-direction: row;
@@ -241,7 +292,7 @@ a::after {
   border: 1px solid #333;
   border-radius: 10px;
   background-color: #000000;
-}
+} */
 /* end of tabs */
 
 
@@ -250,11 +301,36 @@ a::after {
 /* education and work */
 
 /*education*/
+.education {
+  display: flex;
+  flex-direction: column;   /* stack items vertically */
+  align-items: center;      /* center everything horizontally */
+  justify-content: center;
+  gap: 2rem;
+  min-height: 30vh;
+  text-align: left;
+  padding: 1rem;
+  max-width: 700px;
+  margin: 4rem auto 0 auto; /* centers the section */
+  border-radius: 10px;
+  margin-top: 0px;
+}
+
+
+.education-header {
+  font-size: 2rem;
+  color: #ccc;
+}
+
 .education-entry {
   display: flex;
   align-items: center;
+  width: 100%;
+  max-width: 600px;
   margin-bottom: 2rem;
 }
+
+
 
 .educationicon {
   width: 75px;
