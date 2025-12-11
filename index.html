@@ -1,6 +1,18 @@
 <!DOCTYPE html>
 
-<script src="script.js"></script>
+
+
+<!-- <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Epilogue:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anek+Devanagari:wght@100..800&display=swap" rel="stylesheet"> -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anek+Devanagari:wght@100..800&family=Epilogue:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 
 <html lang="en">
     <head>
@@ -13,9 +25,10 @@
     <body>
         <header>
             <ul>
-                <li><a href="robotics.html">robotics</a></li>
-                <li><a href="miscellaneous.html">side quests</a></li>
-                <li><a href="resume.html">resume</a></li>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="Robotics.html">Robotics</a></li>
+                <li><a href="Miscellaneous.html">Extracurriculars</a></li>
+                <li><a href="Resume.html">Resume</a></li>
             </ul>
         </header>
 
@@ -23,21 +36,22 @@
         
         <div class="hero-text">
             <div class="typing-banner"><h1 id="typed-text">Hi, I'm George Ortiz</h1></div>
-            <div class="additional-text">Robotics Engineer ◇ Queens, NYC</div>
+            <div class="additional-text">Robotics Researcher ◇ Queens, NYC</div>
+
+            <section class="about">
+                <div class="about">
+                    <p>I am a Masters student at CMU, working in the Robomechanics Lab under Professor Aaron Johnson. My research lies in robot simulation and reinforcement learning, with a focus on designing policies for quadruped locomotion. </p>
+                    <p>I recently completed a Bachelor's degree in Mechanical Engineering at Stevens Institute of Technology, where I worked with Professor Kishore Pochiraju on path planning using robot manipulators.</p>
+                </div>
+            </section>
             <div class="icon-container">
             
-                <a href="https://github.com/thewoodman20" target="_blank" title="GitHub"><img src="Files/Icons/Github.png" alt="GitHub" class="icon github-icon"></a>
-                <a href="https://www.linkedin.com/in/george-ortiz-12120420b/" target="_blank" title="LinkedIn"><img src="Files/Icons/Linkedin.png" alt="linkedin" class="icon discord-icon"></a>
+                <a href="https://github.com/georgechanortiz" target="_blank" title="GitHub"><img src="Files/Icons/Github.png" alt="GitHub" class="icon github-icon"></a>
+                <a href="https://www.linkedin.com/in/george-ortiz-12120420b/" target="_blank" title="LinkedIn"><img src="Files/Icons/Linkedin.png" alt="linkedin" class="icon linkedin-icon"></a>
                 <a href="mailto:georgechan930@gmail.com" title="Email"><img src="Files/Icons/Mail.png" alt="Email" class="icon email-icon"></a>
                 <a href="resume.html" class="resume-link">Resume</a>
 
             </div>
-            <section class="about">
-                <div class="about">
-                    <p>Mechanical Engineering grad pursuing a Master’s at CMU with a focus on robotics.</p>
-                    <p>If you’re building something cool in robotics, electronics, or embedded systems, I’d love to hear about it. Shoot me a message. </p>
-                </div>
-            </section>
         </div>
         <img src="Files/headshot.jpg" alt="George Ortiz Profile Picture" class="hero-image" />
         </section>
@@ -47,14 +61,15 @@
 
 
         <!-- Tab links -->
-        <div class="tab">
+        <!-- <div class="tab">
             <button class="tablinks" onclick="Tabs(event, 'Work Experience')" id="defaultOpen">Work Experience</button>
             <button class="tablinks" onclick="Tabs(event, 'Education')" >Education</button>
-        </div>
+        </div> -->
 
         <!-- Tab content -->
-        <div id="Education" class="tabcontent">
-        <section id="education">
+        <!-- <div id="Education" class="tabcontent"> -->
+        <section id="education" class="education">
+            <div class="education-header">Education</div>
             <div class="education-entry">
                 <img src="Files/Icons/cmu.png" alt="cmuicon" class="educationicon"/>
                 <div class="education-text">
@@ -74,7 +89,11 @@
         </div>
 
 
-        <div id="Work Experience" class="tabcontent">
+
+
+
+
+        <!-- <div id="Work Experience" class="tabcontent"> -->
         <section id="work">
             <div class="work-entry">
             <img src="Files/Icons/stevens.png" alt="steveicon" class="workicon"/>
@@ -154,13 +173,6 @@
         </div>
         </section>
         <p>&copy; 2025 George Ortiz. All rights reserved.</p>
-        <div class="attributions">
-            <ul>
-                <li><a href="https://www.freepik.com/search">Icon by Peter Lakenbrink</a></li>
-                <li><a href="https://www.freepik.com/icon/linkedin_1384088#fromView=search&page=1&position=23&uuid=9441eb9c-2928-4a6a-9bee-eca3067c7dc7">Icon by Freepik</a></li>
-                <li><a href="https://www.freepik.com/icon/github_1051377#fromView=search&page=1&position=17&uuid=21d6b3ac-069c-4fc3-9fa7-b9da8023287d">Icon by Freepik</a></li>
-            </ul>
-        </div>
         </footer>
     </body>
 </html>
