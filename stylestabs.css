@@ -1,11 +1,30 @@
+
+.anek-devanagari {
+  font-family: "Anek Devanagari", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 200;
+  font-style: bold;
+  font-variation-settings:
+    "width" 100;
+}
+.epilogue {
+  font-family: "Epilogue", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+}
+
+
 html, body {
   margin: 0;
   padding: 0;
-  background-color: #000000;
-  color: #ffffff;
-  font-family: "Calibri", serif;
+  background-color: #202020;
+  color: #000000;
+  /* font-family: "Raleway", serif; */
+  font-family: "Epilogue", sans-serif;
   line-height: 1.6;
 }
+
 
 /* link styles */
 a {
@@ -14,16 +33,18 @@ a {
 
 /* header styles */
 header {
-  font-family: "Calibri", sans-serif;
+  /* font-family: "Raleway", sans-serif; */
+  font-family: "Anek Devanagari", sans-serif;
   position: sticky;
   top: 0;
   left: 0;
   width: 100vw;
   z-index: 1000;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(15, 15, 15, 0.68);
   backdrop-filter: blur(8px);
   opacity: 1;
-  padding: 1rem 2rem;
+  padding: 0.5rem 2rem;
+  padding-top: 0.8rem;
   box-sizing: border-box;
 }
 
@@ -33,15 +54,16 @@ header ul {
   display: flex;
   list-style-type: none;
   justify-content: center;
-
 }
 
+
+
 header ul li a {
-  color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
   font-size: 20px;
   text-decoration: none;
-  color: #949494;
-  padding: 5px 10px;
+  color: #ffffff;
+  padding: 6px 20px;
   margin: 0px 0px;
   position: relative;
   transition: all .5s;
@@ -49,10 +71,9 @@ header ul li a {
 }
 
 a:hover {
-  color: white;
+  color: rgb(0, 157, 255);
   transform: translateY(-3px);
   border-radius: 1.2rem;
-  
 }
 
 a::before {
@@ -78,16 +99,19 @@ a::after {
 }
 /* end of header styles */
 
+
+
+
 h1{
-  font-size: 2.5rem;
-  padding: 1rem;
+  font-family: "Anek Devanagari", sans-serif;
+  font-size: 4.5rem;
+  padding: 0rem;
   text-align: center;
-  border: 1px solid #333; 
-  border-radius: 10px;
-  background-color: #000000;
+  color: white;
   max-width: 800px;
   margin: auto;
   margin-top: 5rem;
+  margin-bottom: 0rem;
 }
 
 h2 {
@@ -97,6 +121,31 @@ h2 {
   margin-top: 1rem;
   margin-bottom: 0.5rem;
   
+}
+
+
+
+.description {
+  font-family: "Epilogue", sans-serif;
+  font-size: 1.25rem;
+  color: white;
+  text-align: center;
+  margin: auto;
+  max-width: 1000px;
+  position: relative;
+  padding-bottom: 1rem;
+}
+
+.description::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1000px;
+  height: 2px;
+  background: white;
+  border-radius: 2px;
 }
 
 h4 {
