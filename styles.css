@@ -40,7 +40,7 @@ header {
   left: 0;
   width: 100vw;
   z-index: 1000;
-  background: rgba(46, 46, 46, 0.68);
+  background: rgba(15, 15, 15, 0.68);
   backdrop-filter: blur(8px);
   opacity: 1;
   padding: 0.5rem 2rem;
@@ -544,6 +544,7 @@ a::after {
 .dot:hover {
   background-color: rgba(255, 255, 255, 0.7);
 }
+
 @media (max-width: 768px) {
   .carousel {
     padding: 2rem 1rem;
@@ -556,22 +557,22 @@ a::after {
   }
 
   .carousel-container {
-    height: 300px;
+    height: auto;
     max-width: 100%;
     padding: 0 1rem;
+    gap: 0.5rem;
   }
 
   .carousel-slide {
-    width: 280px;
-    height: 280px;
-    margin-left: -140px; /* Half of width */
+    width: 120px;
+    height: 200px;
   }
 
   .carousel-slide img {
     width: 100%;
     height: 100%;
-    object-fit: contain;
-    object-position: center;
+    object-fit: scale-down;
+    background-color: #151515;
   }
 
   .carousel-slide.active {
