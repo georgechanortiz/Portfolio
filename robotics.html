@@ -1,10 +1,210 @@
-<!DOCTYPE html>
 
+<html lang="en">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anek+Devanagari:wght@100..800&family=Epilogue:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 
 
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>George Ortiz Projects</title>
+        <link rel="stylesheet" href="stylestabs.css">
+    </head>
+
+
+
+    <body>
+        <header>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="robotics.html">Robotics</a></li>
+                <li><a href="miscellaneous.html">Extracurriculars</a></li>
+                <li><a href="resume.html">Resume</a></li>
+            </ul>
+        </header>
+
+    <div class="container">
+
+
+
+
+
+
+
+        <div class="project-card">
+            <div class="project-content" onclick="toggleExpand(this.parentElement)">
+                <img src="Files/RoboticsProjs/Hackathon/drawingdollarsign.png" alt="Project 1" class="project-image">
+                <div class="project-info">
+                    <h1 class="project-title">LeRobot Arm Hackathon NYC - SO-100 Robot</h1>
+                    <p class="brief-description">
+                        Constructed a SO-100 robot arm, calibrated to be in line with the leader arm configuration. Trained using teleoperation, then filters 
+                        were added to reduce joint trembling and increase speed. SO-100 was able to autonomously pick up a pen within the reachable workspace, 
+                        draw a dollar sign, and put the pen back down.  
+                    <p class="skills"><strong>Skills: </strong>Calibration, Reinforcement Learning, ACT Policy, Signal Processing, Vision Feedback</p>
+                    <p class="expand-hint">Click to expand for more details</p>
+                </div>
+            </div>
+            <div class="extended-content">
+                <div class="extended-description">
+                    <p class="links"><strong>Links: </strong> <a href="https://devpost.com/software/kanye-assistant">Devpost Link</a></p>
+                    <p style="margin-bottom: 15px;">
+                        Team was given all components to construct the SO-100 robot arm, including motors, controllers, 3D printed components, and cameras. 
+                        We spent the first 4-5 hours formulating a plan for what to do with the robot, construction, and calibration of the robot. During 
+                        training, we noticed lots of noise in the trained policy which prevented the pen from being picked up. 
+                    </p>
+                    <p style="margin-bottom: 15px;">
+                        Using the curves obtained from the leader and follower configuration, we were able to subtract the two to isolate most of the 
+                        electrical noise in the system. Using a low pass filter, this noise was greatly reduced, and using "frame skipping" where we 
+                        fed every other frame as a command to the robot doubled its speed. My team won the $1,000 prize for the "Most Innovative Use of Data". 
+                    </p>
+                    
+
+                </div>
+                <div class="slideshow-container">
+                    <div class="slideshow">
+                        <div class="slide active">
+                            <img src="Files/RoboticsProjs/Hackathon/rlsetup.jpg" alt="Slide 1">
+                        </div>
+                        <div class="slide">
+                            <img src="Files/RoboticsProjs/Hackathon/robotontable.jpg" alt="Slide 2">
+                        </div>
+
+                        <button class="slide-nav prev" onclick="changeSlide(this, -1)">‹</button>
+                        <button class="slide-nav next" onclick="changeSlide(this, 1)">›</button>
+                    </div>
+                    <div class="slide-indicators"></div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+
+        <div class="project-card">
+            <div class="project-content" onclick="toggleExpand(this.parentElement)">
+                <img src="IMAGE FILE PATH HERE" alt="Project 1" class="project-image">
+                <div class="project-info">
+                    <h1 class="project-title">PROJECT TITLE</h1>
+                    <p class="brief-description">
+                        ENTER BRIEF DESCRIPTION HERE
+                    </p>
+                    <p class="skills"><strong>Skills: </strong>ENTER SKILLS HERE</p>
+                    <p class="expand-hint">Click to expand for more details</p>
+                </div>
+            </div>
+            <div class="extended-content">
+                <div class="extended-description">
+                    <p class="links"><strong>Links: </strong> <a href="LINK PATH">LINK NAME</a></p>
+                    <p style="margin-bottom: 15px;">
+                        LONGER DESCRIPTION HERE
+                    </p>
+                    <p style="margin-bottom: 15px;">
+                        LONGER DESCRIPTION HERE
+                    </p>
+                </div>
+                <div class="slideshow-container">
+                    <div class="slideshow">
+                        <div class="slide active">
+                            <img src="IMAGE FILE PATH HERE" alt="Slide 1">
+                        </div>
+                        <div class="slide">
+                            <img src="IMAGE FILE PATH HERE" alt="Slide 2">
+                        </div>
+                        <div class="slide">
+                            <img src="IMAGE FILE PATH HERE" alt="Slide 3">
+                        </div>
+                        <button class="slide-nav prev" onclick="changeSlide(this, -1)">‹</button>
+                        <button class="slide-nav next" onclick="changeSlide(this, 1)">›</button>
+                    </div>
+                    <div class="slide-indicators"></div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+
+    <script src="projectexpand.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
+
+        <div class="project-card">
+            <div class="project-content" onclick="toggleExpand(this.parentElement)">
+                <img src="IMAGE FILE PATH HERE" alt="Project 1" class="project-image">
+                <div class="project-info">
+                    <h1 class="project-title">PROJECT TITLE</h1>
+                    <p class="brief-description">
+                        ENTER BRIEF DESCRIPTION HERE
+                    </p>
+                    <p class="skills"><strong>Skills: </strong>ENTER SKILLS HERE</p>
+                    <p class="expand-hint">Click to expand for more details</p>
+                </div>
+            </div>
+            <div class="extended-content">
+                <div class="extended-description">
+                    <p class="links"><strong>Links: </strong> <a href="LINK PATH">LINK NAME</a></p>
+                    <p style="margin-bottom: 15px;">
+                        LONGER DESCRIPTION HERE
+                    </p>
+                    <p style="margin-bottom: 15px;">
+                        LONGER DESCRIPTION HERE
+                    </p>
+                </div>
+                <div class="slideshow-container">
+                    <div class="slideshow">
+                        <div class="slide active">
+                            <img src="IMAGE FILE PATH HERE" alt="Slide 1">
+                        </div>
+                        <div class="slide">
+                            <img src="IMAGE FILE PATH HERE" alt="Slide 2">
+                        </div>
+                        <div class="slide">
+                            <img src="IMAGE FILE PATH HERE" alt="Slide 3">
+                        </div>
+                        <button class="slide-nav prev" onclick="changeSlide(this, -1)">‹</button>
+                        <button class="slide-nav next" onclick="changeSlide(this, 1)">›</button>
+                    </div>
+                    <div class="slide-indicators"></div>
+                </div>
+            </div>
+        </div>
+
+
+ -->
+
+
+
+
+
+
+
+
+ 
+
+
+
+<!-- 
 <html lang="en">
     <head>
         <meta charset="UTF-8">
@@ -185,4 +385,4 @@
             </div>
         </section>
     </body>
-</html> 
+</html>  -->

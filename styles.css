@@ -1,4 +1,4 @@
-
+/* Fonts, general formatting for page */
 .anek-devanagari {
   font-family: "Anek Devanagari", sans-serif;
   font-optical-sizing: auto;
@@ -24,6 +24,10 @@ html, body {
   font-family: "Epilogue", sans-serif;
   line-height: 1.6;
 }
+
+
+/* End of fonts, general formatting for page */
+
 
 
 /* link styles */
@@ -557,27 +561,22 @@ a::after {
   }
 
   .carousel-container {
-    height: auto;
+    height: 280px;
     max-width: 100%;
-    padding: 0 1rem;
-    gap: 0.5rem;
+    padding: 0 0.5rem;
   }
 
   .carousel-slide {
-    width: 120px;
-    height: 200px;
+    width: 280px;
+    height: 280px;
+    margin-left: -140px;
   }
 
   .carousel-slide img {
     width: 100%;
     height: 100%;
-    object-fit: scale-down;
-    background-color: #151515;
-  }
-
-  .carousel-slide.active {
-    width: 280px;
-    height: 280px;
+    object-fit: contain;
+    object-position: center;
   }
 
   .carousel-caption {
@@ -595,11 +594,11 @@ a::after {
   }
 
   .carousel-btn.prev {
-    left: 0rem;
+    left: 0.5rem;
   }
 
   .carousel-btn.next {
-    right: 0rem;
+    right: 0.5rem;
   }
 }
 /* end of carousel styles */
@@ -629,7 +628,6 @@ footer .contactlinks {
 }
 
 footer .contactlinks a {
-  color: rgb(255, 255, 255);
   font-size: 20px;
   text-decoration: none;
   color: #949494;
@@ -641,7 +639,7 @@ footer .contactlinks a {
 }
 
 footer .contactlinks a:hover {
-  color: white;
+  color: rgb(0, 157, 255);
   transform: translateY(-3px);
   border-radius: 1.2rem;
 }
@@ -682,7 +680,6 @@ footer ul {
   display: flex;
   list-style-type: none;
   justify-content: center;
-
 }
 
 
