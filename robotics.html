@@ -230,6 +230,7 @@
             </div>
         </div>
 
+        <!-- Manipulation -->
         <div class="project-card">
             <div class="project-content" onclick="toggleExpand(this.parentElement)">
                 <img src="Files\RoboticsProjs\Manipulation\3dresolvedrates.png" alt="Project 1" class="project-image">
@@ -275,7 +276,53 @@
             </div>
         </div>
 
-
+        <!-- Undergrad Research -->
+        <div class="project-card">
+            <div class="project-content" onclick="toggleExpand(this.parentElement)">
+                <img src="IMAGE FILE PATH HERE" alt="Project 1" class="project-image">
+                <div class="project-info">
+                    <h1 class="project-title">Camera Vision - Doosan H2515 Pick and Place Algorithm</h1>
+                    <p class="brief-description">
+                        Collected, annotated, and trained a YOLOv8 model to identify the pixel location and color class of cubes.
+                        Pixel coordinates were converted directly into a numerical inverse kinematic solution for arm navigation. 
+                        Function was then used in path planning algorithms, which was communicated via a client-server connection, 
+                        emulating TCP protocols for the robot arm to execute.  
+                    </p>
+                    <p class="skills"><strong>Skills: </strong>OpenCV, YOLOv8, Python, Pick and Place</p>
+                    <p class="expand-hint">Click to expand for more details</p>
+                </div>
+            </div>
+            <div class="extended-content">
+                <div class="extended-description">
+                    <p class="links"><strong>Links: </strong> <a href="LINK PATH">LINK NAME</a></p>
+                    <p style="margin-bottom: 15px;">
+                        Data was collected using a webcam overlooking foam cubes scattered across the workspace. These images were 
+                        annotated in Roboflow, then exported and trained using YOLOv8. Since the dataset was small, there was a lower 
+                        confidence in colors close to the table, such as orange or yellow. Colors with higher contrast were identifiable
+                        with a higher confidence and were used instead. The coordinates were found 
+                    </p>
+                    <p style="margin-bottom: 15px;">
+                        LONGER DESCRIPTION HERE
+                    </p>
+                </div>
+                <div class="slideshow-container">
+                    <div class="slideshow">
+                        <div class="slide active">
+                            <img src="IMAGE FILE PATH HERE" alt="Slide 1">
+                        </div>
+                        <div class="slide">
+                            <img src="IMAGE FILE PATH HERE" alt="Slide 2">
+                        </div>
+                        <div class="slide">
+                            <img src="IMAGE FILE PATH HERE" alt="Slide 3">
+                        </div>
+                        <button class="slide-nav prev" onclick="changeSlide(this, -1)">‹</button>
+                        <button class="slide-nav next" onclick="changeSlide(this, 1)">›</button>
+                    </div>
+                    <div class="slide-indicators"></div>
+                </div>
+            </div>
+        </div>
 
 
 
