@@ -23,16 +23,108 @@
                 <li><a href="resume.html">Resume</a></li>
             </ul>
         </header>
-
+    <div class="page-title">Robotics Projects</div>
+   
     <div class="container">
 
 
-
-
-
-
-
+        <!-- Quadruped Locomotion Through Mud -->
         <div class="project-card">
+            <div class="project-content" onclick="toggleExpand(this.parentElement)">
+                <img src="Files\RoboticsProjs\GradResearch\go2.png" alt="Project 1" class="project-image">
+                <div class="project-info">
+                    <h1 class="project-title">Quadruped Locomotion Through Mud</h1>
+                    <p class="brief-description">
+                        Characterization and modeling of non-Newtonian fluid in Isaac, then training a policy to adapt to 
+                        varying concentrations of mud. Policy is imported onto a Unitree GO2 robot for testing in deep mud. 
+                        Target speed is 10 body lengths per minute while maintaining stability. 
+                    </p>
+                    <p class="skills"><strong>Skills: </strong>NVIDIA Isaac, MuJoCo, Reinforcement Learning, QuadSDK, Python, ROS2</p>
+                    <p class="expand-hint">Click to expand for more details</p>
+                </div>
+            </div>
+            <div class="extended-content">
+                <div class="extended-description">
+                    <p class="links"><strong>Links: </strong> <a href="LINK PATH">LINK NAME</a></p>
+                    <p style="margin-bottom: 15px;">
+                        Currently implementing mud physics into Physx, which includes modeling the suction, resistive, and shear forces acting on the quadruped leg. 
+                    </p>
+                    <p style="margin-bottom: 15px;">
+                        
+                    </p>
+                </div>
+                <!-- <div class="slideshow-container">
+                    <div class="slideshow">
+                        <div class="slide active">
+                            <img src="IMAGE FILE PATH HERE" alt="Slide 1">
+                        </div>
+                        <div class="slide">
+                            <img src="IMAGE FILE PATH HERE" alt="Slide 2">
+                        </div>
+                        <div class="slide">
+                            <img src="IMAGE FILE PATH HERE" alt="Slide 3">
+                        </div>
+                        <button class="slide-nav prev" onclick="changeSlide(this, -1)">‹</button>
+                        <button class="slide-nav next" onclick="changeSlide(this, 1)">›</button>
+                    </div>
+                    <div class="slide-indicators"></div>
+                </div> -->
+            </div>
+        </div>
+
+        <!-- Webots MCT Project -->
+        <div class="project-card">
+            <div class="project-content" onclick="toggleExpand(this.parentElement)">
+                <img src="Files\RoboticsProjs\MCTProject\FSDProj.png" alt="Project 1" class="project-image">
+                <div class="project-info">
+                    <h1 class="project-title">Using Webots to Design FSD for a Tesla Model 3</h1>
+                    <p class="brief-description">
+                        This project involved the implementation of a variety of efficient controls 
+                        and estimators for a self-driving vehicle. Ultimately, I ended up implementing a PID controller,
+                        an LQR controller, MPC. Each controller was tested and graphed to compare. The MPC controller resulted in 
+                        the fastest reflexive control, yielding in a completion of the track in under 128 seconds. 
+                    </p>
+                    <p class="skills"><strong>Skills: </strong>Linearization, PID, Controllability, Stabilizability, LQR, MPC, A Star, EKF SLAM</p>
+                    <p class="expand-hint">Click to expand for more details</p>
+                </div>
+            </div>
+            <div class="extended-content">
+                <div class="extended-description">
+                    <p class="links"><strong>Links: </strong> <a href="LINK PATH">LINK NAME</a></p>
+                    <p style="margin-bottom: 15px;">
+                        I began by tuning the proportional, integral and derivative gains to optimize PID performance. Next, since 
+                        longitudinal control varies the speed, I linearized the lateral control, or turning, using pole placement. 
+                        I discretized my model and then implemented LQR, which after tuning achieved a speed of under 130 seconds,  
+                        rewarding me with an additional 10 points extra credit for this project. I was able to achieve this speed
+                        by tuning how far ahead the vehicle looked, which gave the vehicle more time to react to the updated information. 
+                    </p>
+                    <p style="margin-bottom: 15px;">
+                        I also implemented path planning algorithms and estimators, such as A Star and EKF SLAM. A Star was used to replan
+                        a trajectory when a slow moving car posed as an "obstacle" ahead. A Star allowed my vehicle to overtake the slower 
+                        vehicle in the straight. EKF SLAM was used as an estimator to determine the rough position and heading of the vehicle. 
+                    </p>
+                </div>
+                <div class="slideshow-container">
+                    <div class="slideshow">
+                        <div class="slide active">
+                            <img src="Files\RoboticsProjs\MCTProject\A Star.png" alt="Slide 1">
+                        </div>
+                        <div class="slide">
+                            <img src="Files\RoboticsProjs\MCTProject\LQR.png" alt="Slide 2">
+                        </div>
+                        <div class="slide">
+                            <img src="Files\RoboticsProjs\MCTProject\PID.png" alt="Slide 3">
+                        </div>
+                        <button class="slide-nav prev" onclick="changeSlide(this, -1)">‹</button>
+                        <button class="slide-nav next" onclick="changeSlide(this, 1)">›</button>
+                    </div>
+                    <div class="slide-indicators"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- LeRobot Arm Hackathon NYC - SO-100 Robot -->
+        <div class="project-card"> 
             <div class="project-content" onclick="toggleExpand(this.parentElement)">
                 <img src="Files/RoboticsProjs/Hackathon/drawingdollarsign.png" alt="Project 1" class="project-image">
                 <div class="project-info">
@@ -40,7 +132,7 @@
                     <p class="brief-description">
                         Constructed a SO-100 robot arm, calibrated to be in line with the leader arm configuration. Trained using teleoperation, then filters 
                         were added to reduce joint trembling and increase speed. SO-100 was able to autonomously pick up a pen within the reachable workspace, 
-                        draw a dollar sign, and put the pen back down.  
+                        draw a dollar sign, and put the pen back down. Techniques like frame skipping were experimented to double the task speed. 
                     <p class="skills"><strong>Skills: </strong>Calibration, Reinforcement Learning, ACT Policy, Signal Processing, Vision Feedback</p>
                     <p class="expand-hint">Click to expand for more details</p>
                 </div>
@@ -78,21 +170,21 @@
             </div>
         </div>
 
-
-
-
-
-
-
+        <!-- SESMA 3.0 -->
         <div class="project-card">
             <div class="project-content" onclick="toggleExpand(this.parentElement)">
-                <img src="IMAGE FILE PATH HERE" alt="Project 1" class="project-image">
+                <img src="Files\RoboticsProjs\SESMA\SESMAdevice3dp.png" alt="Project 1" class="project-image">
                 <div class="project-info">
-                    <h1 class="project-title">PROJECT TITLE</h1>
+                    <h1 class="project-title">SESMA 3.0 - Soft Exosuit for patients with Spinal Muscular Atrophy (Capstone)</h1>
                     <p class="brief-description">
-                        ENTER BRIEF DESCRIPTION HERE
+                        This project was an exernal device aimed at assisting type III SMA patients with sit to stand transitions. 
+                        This device autonomously detected when the user wanted to stand, actuated a spring tied to a spool, and a 
+                        cable routed down the wearers' leg pulled them up. Achieved 10% assistance, which beat out the 3-4% of the 
+                        previous iteration's design with a great reduction in size. Total volume decreased by 17%, width decreased 28%. 
+                        Final prototype was sturdier and relocated to the sides, which was more realistic for a wearer (They can now 
+                        lean back in their chair).
                     </p>
-                    <p class="skills"><strong>Skills: </strong>ENTER SKILLS HERE</p>
+                    <p class="skills"><strong>Skills: </strong>Mechatronics, 3D splines, CAD, SolidWorks</p>
                     <p class="expand-hint">Click to expand for more details</p>
                 </div>
             </div>
@@ -100,10 +192,68 @@
                 <div class="extended-description">
                     <p class="links"><strong>Links: </strong> <a href="LINK PATH">LINK NAME</a></p>
                     <p style="margin-bottom: 15px;">
-                        LONGER DESCRIPTION HERE
+                        The challenge with this project was the use of a single motor to actuate both the charging mechanism 
+                        for the spring and the turning of a cam to change the state. This was done using a geared switching mechanism
+                        on the motor to switch between the camshaft and the powershaft. Two leads were used to reduce the distance needed
+                        to travel from one shaft to the other. 
                     </p>
                     <p style="margin-bottom: 15px;">
-                        LONGER DESCRIPTION HERE
+                        To autonomously detect a STS transition, we ran testing using a motion capture setup with cameras and markers routed
+                        in the same areas as a cable would be routed down a patient's leg. I took these points in 3D space and created a 3D
+                        spline through them, which interpolated between the points. These splines were discretized and summed to give a good
+                        approximation as to how much the length of the cable changed from sitting to standing. We then compared this data to 
+                        data found in a paper that determined the point of maximum knee torque, and actuated the mechanism at that point. 
+                    </p>
+                </div>
+                <div class="slideshow-container">
+                    <div class="slideshow">
+                        <div class="slide active">
+                            <img src="Files\RoboticsProjs\SESMA\InterpolatedSTS.png" alt="Slide 1">
+                        </div>
+                        <div class="slide">
+                            <img src="Files\RoboticsProjs\SESMA\Torque v Elongation .png" alt="Slide 2">
+                        </div>
+                        <div class="slide">
+                            <img src="Files\RoboticsProjs\SESMA\Machining Pics.png" alt="Slide 3">
+                        </div>
+                        <div class="slide">
+                            <img src="Files\RoboticsProjs\SESMA\Gearing.png" alt="Slide 4">
+                        </div>
+                        <div class="slide">
+                            <img src="Files\RoboticsProjs\SESMA\Cable Path.png" alt="Slide 5">
+                        </div>
+                        <button class="slide-nav prev" onclick="changeSlide(this, -1)">‹</button>
+                        <button class="slide-nav next" onclick="changeSlide(this, 1)">›</button>
+                    </div>
+                    <div class="slide-indicators"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="project-card">
+            <div class="project-content" onclick="toggleExpand(this.parentElement)">
+                <img src="Files\RoboticsProjs\Manipulation\3dresolvedrates.png" alt="Project 1" class="project-image">
+                <div class="project-info">
+                    <h1 class="project-title">Robotic Arm Manipulation: Resolved Rates, Gradient to Compute Min Norm</h1>
+                    <p class="brief-description">
+                        This project is a combination of assignments from a graduate course at Stevens, ME 650. This course covered optimization and mathematical design techniques for 
+                        control of serial manipulators. In this course, I used various techniques to control manipulators in different contexts.
+                    </p>
+                    <p class="skills"><strong>Skills: </strong>Resolved Rates, Null Space Projection, Jacobian, Cost Functions, MATLAB</p>
+                    <p class="expand-hint">Click to expand for more details</p>
+                </div>
+            </div>
+            <div class="extended-content">
+                <div class="extended-description">
+                    <p class="links"><strong>Links: </strong> <a href="LINK PATH">LINK NAME</a></p>
+                    <p style="margin-bottom: 15px;">
+                        The first project shows a resolved rates simulation, which were implemented for link speed optimization. Inverse kinematics via a closed loop resolved rates algorithm 
+                        enabled the robot to adhere to speed constraints (1mm tolerance translation, 0.0524 radians rotational). These results were simualted via 1st order interpolation in MATLAB.
+                    </p>
+                    <p style="margin-bottom: 15px;">
+                        My second project involved using both the gradient of a curve and the Jacobian projected into the null space to allow the end effector to maintain orthogonality to a surface. 
+                        Robot links and movement were simulated in MATLAB with a minimum norm pseudoinverse redundancy resolution algorithm. Maintaining this orthogonality to a surface is highly 
+                        applicable in welding or writing applications. 
                     </p>
                 </div>
                 <div class="slideshow-container">
@@ -131,6 +281,12 @@
 
 
 
+
+
+
+
+
+
     <script src="projectexpand.js"></script>
 </body>
 </html>
@@ -145,7 +301,7 @@
 
 
 
-
+<!-- TEMPLATE  -->
 
 <!-- 
 

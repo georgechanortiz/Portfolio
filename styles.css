@@ -611,6 +611,7 @@ footer {
   left: 0;
   width: 100%;
   box-sizing: border-box;
+  color: white;
 }
 footer p {
   font-size: 0.8em;

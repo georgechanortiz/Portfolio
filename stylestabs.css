@@ -105,6 +105,7 @@ a::after {
 
 
 
+
 * {
     margin: 0;
     padding: 0;
@@ -115,6 +116,24 @@ body {
     font-family: "Epilogue", sans-serif;
     background: #202020;
 }
+
+
+
+.page-title{
+  font-family: "Anek Devanagari", sans-serif;
+  font-size: 4.5rem;
+  padding: 0rem;
+  text-align: center;
+  color: white;
+  max-width: 800px;
+  margin: auto;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+}
+
+
+
+
 
 .container {
     max-width: 1200px;
