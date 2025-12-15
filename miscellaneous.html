@@ -1,4 +1,305 @@
-<!DOCTYPE html>
+<html lang="en">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anek+Devanagari:wght@100..800&family=Epilogue:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>George Ortiz Projects</title>
+        <link rel="stylesheet" href="stylestabs.css">
+    </head>
+
+    <body>
+        <header>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="robotics.html">Robotics</a></li>
+                <li><a href="miscellaneous.html">Extracurriculars</a></li>
+                <li><a href="resume.html">Resume</a></li>
+            </ul>
+        </header>
+    <div class="page-title">Robotics Projects</div>
+   
+    <div class="container">
+
+        <!-- Doosan Base -->
+        <div class="project-card">
+            <div class="project-content" onclick="toggleExpand(this.parentElement)">
+                <img src="Files\MiscProjs\DoosanBase.png" alt="Project 1" class="project-image">
+                <div class="project-info">
+                    <h1 class="project-title">Doosan H2515 Base</h1>
+                    <p class="brief-description">
+                        First big project in the PROOF Lab, I was tasked with building a base for the robot to be mounted on. Made from 
+                        8020 extrusions, calculations made with the maximum payload in mind to ensure that the robot would not tip over 
+                        from use over edge. Constructed base and supervised installation of it onto the robot. 
+                    </p>
+                    <p class="skills"><strong>Skills: </strong>SolidWorks, FBD Calculations, Machining</p>
+                    <p class="expand-hint">Click to expand for more details</p>
+                </div>
+            </div>
+            <div class="extended-content">
+                <div class="extended-description">
+                    <p style="margin-bottom: 15px;">
+                        Obtained an STL model of the robot, which helped with creating the base. Custom plates needed to be designed to 
+                        create the angular truss which prevented twist and kept the frame square. Over 200 screws were used in assembly, and 
+                        the plates were machined by me in the machine shop. I also drilled holes in the top plates to accept screws into the 
+                        8020s. THe power supply was fitted underneath the base, and weights were added on the base in the form of 45lb gym plates. 
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Gold Nanoparticle Research -->
+        <div class="project-card">
+            <div class="project-content" onclick="toggleExpand(this.parentElement)">
+                <img src="Files\MiscProjs\GNPResearch\GoldNanoparticles.png" alt="Project 1" class="project-image">
+                <div class="project-info">
+                    <h1 class="project-title">Gold Nanoparticle Research</h1>
+                    <p class="brief-description">
+                        Developed Labs for the E311 course at Stevens, a materials processing course taught under Prof. Sarah Goodman. 
+                        I created Gold Nanoparticles using the Turkevich method and adjusted the size through adjusting the concentration 
+                        of sodium citrate solution. Resulted in nanoparticles of different sizes, which because of refractive properties 
+                        changed the color of solution. Implemented at a cost of under 1 dollar per student. I presented my findings at the 
+                        ASEE MAS Fall 2023 Conference. 
+                    </p>
+                    <p class="skills"><strong>Skills: </strong>Scanning Electron Microscopy, Spectrophotometry, Molarity Calculations</p>
+                    <p class="expand-hint">Click to expand for more details</p>
+                </div>
+            </div>
+            <div class="extended-content">
+                <div class="extended-description">
+                    <p style="margin-bottom: 15px;">
+                        Gold (III) chloride is diluted using distilled water. When constantly stirred with diluted sodium citrate under heat, 
+                        the solution turns from yellow to gray, then to red or purple, which indicates the formation of these nanoparticles. 
+                        The heat and duration of mixing were changed and tested for observable diffrences in color or size. Best results were
+                        with changing the concentration of sodium citrate, which yielded a difference in about 50nm. 
+                    </p>
+                    <p style="margin-bottom: 15px;">
+                        The sizes were tested and confirmed with a Scanning Electron Microscope, which I was trained to use. Samples needed to be
+                        pipetted onto a SEM stand with a silicon wafer, and dried properly. The samples were then observed under the SEM. The 
+                        color of the solution was also quantified using Spectrophotometry, which outputs a wavelength of color. These findings 
+                        were enough to establish a relationship between concentration and size. 
+                    </p>
+                </div>
+                <div class="slideshow-container">
+                    <div class="slideshow">
+                        <div class="slide active">
+                            <img src="Files\MiscProjs\GNPResearch\PosterSession.png" alt="Slide 1">
+                        </div>
+                        <div class="slide">
+                            <img src="Files\MiscProjs\GNPResearch\Solutions.jpg" alt="Slide 2">
+                        </div>
+                        <div class="slide">
+                            <img src="Files\MiscProjs\GNPResearch\Spectrophotometry.jpg" alt="Slide 3">
+                        </div>
+                        <div class="slide">
+                            <img src="Files\MiscProjs\GNPResearch\GNPSizeSEM.jpg" alt="Slide 4">
+                        </div>
+                        <div class="slide">
+                            <img src="Files\MiscProjs\GNPResearch\CoolSodiumCitrate.jpg" alt="Slide 5">
+                        </div>
+                        <button class="slide-nav prev" onclick="changeSlide(this, -1)">‹</button>
+                        <button class="slide-nav next" onclick="changeSlide(this, 1)">›</button>
+                    </div>
+                    <div class="slide-indicators"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Kumiko Lamp -->
+        <div class="project-card">
+            <div class="project-content" onclick="toggleExpand(this.parentElement)">
+                <img src="Files\MiscProjs\KumikoLamp.png" alt="Project 1" class="project-image">
+                <div class="project-info">
+                    <h1 class="project-title">Kumiko Lamp</h1>
+                    <p class="brief-description">
+                        Needed a study lamp for my room. Made from basswood and walnut, light is diffused through shoji paper lined on 
+                        the Kumiko panels. Lamp designed so that if panels are broken, they can be detached, serviced, and replaced. 
+                    </p>
+                    <p class="skills"><strong>Skills: </strong>Hand-Tool Woodworking, Patience </p>
+                    <p class="expand-hint">Click to expand for more details</p>
+                </div>
+            </div>
+            <div class="extended-content">
+                <div class="extended-description">
+                    <p style="margin-bottom: 15px;">
+                        I started off with watching videos for inspiration, then sketching ideas out for the kumiko panels. This was a major
+                        quarantine project. Power tools seemed a bit intimidating and extremely wasteful when making Kumiko, as the kerf from a
+                        table saw blade rivals the thickness of a single Kumiko strip. I resorted to hand cutting and planing each piece down to 
+                        size, and gluing up all the joints. 
+                    </p>
+                    <p style="margin-bottom: 15px;">
+                        Spray adhesive was applied to the back to accept the shoji paper, which was carefully laid onto the kumiko and allowed to dry. 
+                        Dabs of hot glue secure the panels onto the walnut frame, for easy replacability in case a panel breaks. 
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Watch Box -->
+        <div class="project-card">
+            <div class="project-content" onclick="toggleExpand(this.parentElement)">
+                <img src="Files\MiscProjs\WatchBox.png" alt="Project 1" class="project-image">
+                <div class="project-info">
+                    <h1 class="project-title">Watch Box</h1>
+                    <p class="brief-description">
+                        ENTER BRIEF DESCRIPTION HERE
+                    </p>
+                    <p class="skills"><strong>Skills: </strong>ENTER SKILLS HERE</p>
+                    <p class="expand-hint">Click to expand for more details</p>
+                </div>
+            </div>
+            <div class="extended-content">
+                <div class="extended-description">
+                    <p style="margin-bottom: 15px;">
+                        LONGER DESCRIPTION HERE
+                    </p>
+                    <p style="margin-bottom: 15px;">
+                        LONGER DESCRIPTION HERE
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Infill Block Plane -->
+        <div class="project-card">
+            <div class="project-content" onclick="toggleExpand(this.parentElement)">
+                <img src="IMAGE FILE PATH HERE" alt="Project 1" class="project-image">
+                <div class="project-info">
+                    <h1 class="project-title">PROJECT TITLE</h1>
+                    <p class="brief-description">
+                        ENTER BRIEF DESCRIPTION HERE
+                    </p>
+                    <p class="skills"><strong>Skills: </strong>ENTER SKILLS HERE</p>
+                    <p class="expand-hint">Click to expand for more details</p>
+                </div>
+            </div>
+            <div class="extended-content">
+                <div class="extended-description">
+                    <p style="margin-bottom: 15px;">
+                        LONGER DESCRIPTION HERE
+                    </p>
+                    <p style="margin-bottom: 15px;">
+                        LONGER DESCRIPTION HERE
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- VGeorge -->
+        <div class="project-card">
+            <div class="project-content" onclick="toggleExpand(this.parentElement)">
+                <img src="IMAGE FILE PATH HERE" alt="Project 1" class="project-image">
+                <div class="project-info">
+                    <h1 class="project-title">PROJECT TITLE</h1>
+                    <p class="brief-description">
+                        ENTER BRIEF DESCRIPTION HERE
+                    </p>
+                    <p class="skills"><strong>Skills: </strong>ENTER SKILLS HERE</p>
+                    <p class="expand-hint">Click to expand for more details</p>
+                </div>
+            </div>
+            <div class="extended-content">
+                <div class="extended-description">
+                    <p style="margin-bottom: 15px;">
+                        LONGER DESCRIPTION HERE
+                    </p>
+                    <p style="margin-bottom: 15px;">
+                        LONGER DESCRIPTION HERE
+                    </p>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Fixture for Zimmer -->
+        <div class="project-card">
+            <div class="project-content" onclick="toggleExpand(this.parentElement)">
+                <img src="IMAGE FILE PATH HERE" alt="Project 1" class="project-image">
+                <div class="project-info">
+                    <h1 class="project-title">PROJECT TITLE</h1>
+                    <p class="brief-description">
+                        ENTER BRIEF DESCRIPTION HERE
+                    </p>
+                    <p class="skills"><strong>Skills: </strong>ENTER SKILLS HERE</p>
+                    <p class="expand-hint">Click to expand for more details</p>
+                </div>
+            </div>
+            <div class="extended-content">
+                <div class="extended-description">
+                    <p style="margin-bottom: 15px;">
+                        LONGER DESCRIPTION HERE
+                    </p>
+                    <p style="margin-bottom: 15px;">
+                        LONGER DESCRIPTION HERE
+                    </p>
+                </div>
+            </div>
+        </div>
+
+
+    <script src="projectexpand.js"></script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+<!-- TEMPLATE  -->
+
+<!-- 
+
+        <div class="project-card">
+            <div class="project-content" onclick="toggleExpand(this.parentElement)">
+                <img src="IMAGE FILE PATH HERE" alt="Project 1" class="project-image">
+                <div class="project-info">
+                    <h1 class="project-title">PROJECT TITLE</h1>
+                    <p class="brief-description">
+                        ENTER BRIEF DESCRIPTION HERE
+                    </p>
+                    <p class="skills"><strong>Skills: </strong>ENTER SKILLS HERE</p>
+                    <p class="expand-hint">Click to expand for more details</p>
+                </div>
+            </div>
+            <div class="extended-content">
+                <div class="extended-description">
+                    <p style="margin-bottom: 15px;">
+                        LONGER DESCRIPTION HERE
+                    </p>
+                    <p style="margin-bottom: 15px;">
+                        LONGER DESCRIPTION HERE
+                    </p>
+                </div>
+            </div>
+        </div>
+
+ -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <!DOCTYPE html>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -143,4 +444,4 @@
 
 
     </body>
-</html>
+</html> -->

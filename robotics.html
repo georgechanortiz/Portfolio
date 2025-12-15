@@ -4,15 +4,12 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anek+Devanagari:wght@100..800&family=Epilogue:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 
-
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>George Ortiz Projects</title>
         <link rel="stylesheet" href="stylestabs.css">
     </head>
-
-
 
     <body>
         <header>
@@ -27,13 +24,12 @@
    
     <div class="container">
 
-
         <!-- Quadruped Locomotion Through Mud -->
         <div class="project-card">
             <div class="project-content" onclick="toggleExpand(this.parentElement)">
                 <img src="Files\RoboticsProjs\GradResearch\go2.png" alt="Project 1" class="project-image">
                 <div class="project-info">
-                    <h1 class="project-title">Quadruped Locomotion Through Mud</h1>
+                    <h1 class="project-title">Quadruped Locomotion Through Mud (WIP)</h1>
                     <p class="brief-description">
                         Characterization and modeling of non-Newtonian fluid in Isaac, then training a policy to adapt to 
                         varying concentrations of mud. Policy is imported onto a Unitree GO2 robot for testing in deep mud. 
@@ -45,7 +41,7 @@
             </div>
             <div class="extended-content">
                 <div class="extended-description">
-                    <p class="links"><strong>Links: </strong> <a href="LINK PATH">LINK NAME</a></p>
+                    <!-- <p class="links"><strong>Links: </strong> <a href="LINK PATH">LINK NAME</a></p> -->
                     <p style="margin-bottom: 15px;">
                         Currently implementing mud physics into Physx, which includes modeling the suction, resistive, and shear forces acting on the quadruped leg. 
                     </p>
@@ -90,7 +86,7 @@
             </div>
             <div class="extended-content">
                 <div class="extended-description">
-                    <p class="links"><strong>Links: </strong> <a href="LINK PATH">LINK NAME</a></p>
+                    <!-- <p class="links"><strong>Links: </strong> <a href="LINK PATH">LINK NAME</a></p> -->
                     <p style="margin-bottom: 15px;">
                         I began by tuning the proportional, integral and derivative gains to optimize PID performance. Next, since 
                         longitudinal control varies the speed, I linearized the lateral control, or turning, using pole placement. 
@@ -190,7 +186,7 @@
             </div>
             <div class="extended-content">
                 <div class="extended-description">
-                    <p class="links"><strong>Links: </strong> <a href="LINK PATH">LINK NAME</a></p>
+                    <!-- <p class="links"><strong>Links: </strong> <a href="LINK PATH">LINK NAME</a></p> -->
                     <p style="margin-bottom: 15px;">
                         The challenge with this project was the use of a single motor to actuate both the charging mechanism 
                         for the spring and the turning of a cam to change the state. This was done using a geared switching mechanism
@@ -246,7 +242,7 @@
             </div>
             <div class="extended-content">
                 <div class="extended-description">
-                    <p class="links"><strong>Links: </strong> <a href="LINK PATH">LINK NAME</a></p>
+                    <!-- <p class="links"><strong>Links: </strong> <a href="LINK PATH">LINK NAME</a></p> -->
                     <p style="margin-bottom: 15px;">
                         The first project shows a resolved rates simulation, which were implemented for link speed optimization. Inverse kinematics via a closed loop resolved rates algorithm 
                         enabled the robot to adhere to speed constraints (1mm tolerance translation, 0.0524 radians rotational). These results were simualted via 1st order interpolation in MATLAB.
@@ -257,7 +253,7 @@
                         applicable in welding or writing applications. 
                     </p>
                 </div>
-                <div class="slideshow-container">
+                <!-- <div class="slideshow-container">
                     <div class="slideshow">
                         <div class="slide active">
                             <img src="IMAGE FILE PATH HERE" alt="Slide 1">
@@ -272,14 +268,14 @@
                         <button class="slide-nav next" onclick="changeSlide(this, 1)">›</button>
                     </div>
                     <div class="slide-indicators"></div>
-                </div>
+                </div> -->
             </div>
         </div>
 
         <!-- Undergrad Research -->
         <div class="project-card">
             <div class="project-content" onclick="toggleExpand(this.parentElement)">
-                <img src="IMAGE FILE PATH HERE" alt="Project 1" class="project-image">
+                <img src="Files\RoboticsProjs\UndergradResearch\cameravision.png" alt="Project 1" class="project-image">
                 <div class="project-info">
                     <h1 class="project-title">Camera Vision - Doosan H2515 Pick and Place Algorithm</h1>
                     <p class="brief-description">
@@ -294,18 +290,22 @@
             </div>
             <div class="extended-content">
                 <div class="extended-description">
-                    <p class="links"><strong>Links: </strong> <a href="LINK PATH">LINK NAME</a></p>
+                    <!-- <p class="links"><strong>Links: </strong> <a href="LINK PATH">LINK NAME</a></p> -->
                     <p style="margin-bottom: 15px;">
                         Data was collected using a webcam overlooking foam cubes scattered across the workspace. These images were 
                         annotated in Roboflow, then exported and trained using YOLOv8. Since the dataset was small, there was a lower 
                         confidence in colors close to the table, such as orange or yellow. Colors with higher contrast were identifiable
-                        with a higher confidence and were used instead. The coordinates were found 
+                        with a higher confidence and were used instead. The center of the bounding box was found using OpenCV, and the 
+                        coordinates were parameterized and scaled to fit the workspace. The joint angles were also interpolated, which 
+                        worked for this case but for other cases resolved rates algorithm would be more generalizable. 
                     </p>
                     <p style="margin-bottom: 15px;">
-                        LONGER DESCRIPTION HERE
+                        Once joint angles were computed, the robot was sent these joint commands using the Doosan Robot Language, a 
+                        Python-based framework from Doosan. I used the sockets library in Python to establish a client-server connection, 
+                        which sent the robot commands to the robot to operate in the workspace. 
                     </p>
                 </div>
-                <div class="slideshow-container">
+                <!-- <div class="slideshow-container">
                     <div class="slideshow">
                         <div class="slide active">
                             <img src="IMAGE FILE PATH HERE" alt="Slide 1">
@@ -320,22 +320,143 @@
                         <button class="slide-nav next" onclick="changeSlide(this, 1)">›</button>
                     </div>
                     <div class="slide-indicators"></div>
+                </div> -->
+            </div>
+        </div>
+
+        <!-- SLAM and RRT -->
+        <div class="project-card">
+            <div class="project-content" onclick="toggleExpand(this.parentElement)">
+                <img src="Files\RoboticsProjs\SLAMRRT\SLAMAndRRT.png" alt="Project 1" class="project-image">
+                <div class="project-info">
+                    <h1 class="project-title">SLAM and RRT Implementation for 2D Mobile Robot with Obstacle Avoidance</h1>
+                    <p class="brief-description">
+                        Rapidly-exploring Random Trees were used to plan a collision free path by sampling and exploring the 
+                        environment from a start to a goal state. SLAM was then used to estimate and visualize the uncertainty 
+                        along the robot's trajectory. Known obstacles were modeled as landmarks to reduce this uncertainty. 
+                        The robot's confidence along the path decreased when it didnt see an obstacle, and once localized the 
+                        confidence increased. 
+                    </p>
+                    <p class="skills"><strong>Skills: </strong>RRT, SLAM, Kalman Filter, MATLAB</p>
+                    <p class="expand-hint">Click to expand for more details</p>
+                </div>
+            </div>
+            <div class="extended-content">
+                <div class="extended-description">
+                    <!-- <p class="links"><strong>Links: </strong> <a href="LINK PATH">LINK NAME</a></p> -->
+                    <p style="margin-bottom: 15px;">
+                        I learned how sampling-based motion planning and state estimation can be used for reliable navigation. 
+                        RRT was iteratively used to find paths, and SLAM provided a framework for estimating the error. Obstacle 
+                        locations were known, so they were useful as landmarks and sensor measurements. 
+                    </p>
+                    <p style="margin-bottom: 15px;">
+                        The RRT algorithm generated 100 trajectories, and the final plots represent the most extreme cases, which 
+                        includes the shortest path and the minimum and maximum uncertainty at the goal state. The Kalman filter 
+                        calculated the uncertainty at each time step, which was visualized in MATLAB.
+                    </p>
+                </div>
+                <div class="slideshow-container">
+                    <div class="slideshow">
+                        <div class="slide active">
+                            <img src="Files/RoboticsProjs/SLAMRRT/ShortestPath.png" alt="Slide 1">
+                        </div>
+                        <div class="slide">
+                            <img src="Files\RoboticsProjs\SLAMRRT\MinimumUncertainty.png" alt="Slide 2">
+                        </div>
+                        <div class="slide">
+                            <img src="Files\RoboticsProjs\SLAMRRT\MaximumUncertainty.png" alt="Slide 3">
+                        </div>
+                        <button class="slide-nav prev" onclick="changeSlide(this, -1)">‹</button>
+                        <button class="slide-nav next" onclick="changeSlide(this, 1)">›</button>
+                    </div>
+                    <div class="slide-indicators"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Grip Strength Rehabilitation -->
+        <div class="project-card">
+            <div class="project-content" onclick="toggleExpand(this.parentElement)">
+                <img src="Files\RoboticsProjs\Mechatronics\handsqueezerbox.png" alt="Project 1" class="project-image">
+                <div class="project-info">
+                    <h1 class="project-title">Hand Squeezing Device for Grip Strength Rehabilitation</h1>
+                    <p class="brief-description">
+                        This project is a culmination of a graduate mechatronics course taught at Stevens, ME 522. The knob 
+                        on top of the box controls the "squeezing strength", which is outputted by the LCD screen. The resulting
+                        force on the grippers is changed using a fourbar linkage to slide a spring. A limit switch on the handle 
+                        counts the repetitions. 
+                    </p>
+                    <p class="skills"><strong>Skills: </strong>Mechatronics, PICBasic Pro, PIC16f88 Microcontroller</p>
+                    <p class="expand-hint">Click to expand for more details</p>
+                </div>
+            </div>
+            <div class="extended-content">
+                <div class="extended-description">
+                    <!-- <p class="links"><strong>Links: </strong> <a href="LINK PATH">LINK NAME</a></p> -->
+                    <p style="margin-bottom: 15px;">
+                        This device was designed to alleviate joint pain and rebuild hand/forearm strength. Applications could be in 
+                        PT clinics or doctors offices to test and monitor grip strength and document effectiveness. The device used a 
+                        PIC16F88 microcontroller, programmed in PICBasic Pro. Polling used to detect when the limit switch was triggered,
+                        which activates a buzzer and a rep count is displayed on an LCD. A challenge faced was coding the force; "ADCIN" was 
+                        needed instead of the "Pot" function to read the potentiometer output and translate the force.  
+                    </p>
+                    <p style="margin-bottom: 15px;">
+                        The force was translated through a fourbar linkage and a spring. The fourbar linkage stretched the spring, which 
+                        due to an extremely limited budget was a rubber band. For future implementations with a real budget, a better 
+                        spring with more variation would be used for more practical application. 
+                    </p>
+                </div>
+                <div class="slideshow-container">
+                    <div class="slideshow">
+                        <div class="slide active">
+                            <img src="Files\RoboticsProjs\Mechatronics\circuitdiagram.png" alt="Slide 1">
+                        </div>
+                        <div class="slide">
+                            <img src="Files\RoboticsProjs\Mechatronics\handsqueezerbox.png" alt="Slide 2">
+                        </div>
+                        <div class="slide">
+                            <img src="Files\RoboticsProjs\Mechatronics\schematic.png" alt="Slide 3">
+                        </div>
+                        <button class="slide-nav prev" onclick="changeSlide(this, -1)">‹</button>
+                        <button class="slide-nav next" onclick="changeSlide(this, 1)">›</button>
+                    </div>
+                    <div class="slide-indicators"></div>
                 </div>
             </div>
         </div>
 
 
-
-
-
-
-
-
-
+        <!-- Robot End Effector  -->
+        <div class="project-card">
+            <div class="project-content" onclick="toggleExpand(this.parentElement)">
+                <img src="Files\RoboticsProjs\Mechatronics\endeffector.png" alt="Project 1" class="project-image">
+                <div class="project-info">
+                    <h1 class="project-title">Robot End Effector for Pick and Place</h1>
+                    <p class="brief-description">
+                        Prof. Kishore Pochiraju purchased a Doosan H2515 6 DoF arm for the PROOF Lab, which needed an end effector 
+                        for pick and place. A gripper end effector was designed and 3D printed for the PROOF Lab to open and close 
+                        its jaws, with a PWM signal from the Arduino sent to a motor controller to actuate the jaws. The Arduino was 
+                        bcontrolled by a digital IO on the robot flange, which allowed for a direct connection with the robot. 
+                    </p>
+                    <p class="skills"><strong>Skills: </strong>SolidWorks, Mechatronics, 3D Printing</p>
+                    <p class="expand-hint">Click to expand for more details</p>
+                </div>
+            </div>
+            <div class="extended-content">
+                <div class="extended-description">
+                    <!-- <p class="links"><strong>Links: </strong> <a href="LINK PATH">LINK NAME</a></p> -->
+                    <p style="margin-bottom: 15px;">
+                        The robot arm came with a digital IO on the flange which outputted 24V. I stepped down this voltage using a 
+                        voltage divider circuit to 5V, which an Arduino then received. The Arduino then sent a PWM signal to a motor 
+                        controller, which actauted the jaws. A gear and hinging mechanism was used to open and close the jaws.  
+                    </p>
+                </div>
+            </div>
+        </div>
 
 
     <script src="projectexpand.js"></script>
-</body>
+    </body>
 </html>
 
 
