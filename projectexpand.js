@@ -2,16 +2,23 @@ let currentSlides = {};
 
 function toggleExpand(card) {
     const wasExpanded = card.classList.contains('expanded');
-    
+
     // Close all other cards
     document.querySelectorAll('.project-card').forEach(c => {
         c.classList.remove('expanded');
+        // Reset hint text for all cards
+        const hint = c.querySelector('.expand-hint');
+        if (hint) hint.textContent = 'Click to expand for more details';
     });
 
-    // Toggle this card
+    // Open this card if it wasn't already open
     if (!wasExpanded) {
         card.classList.add('expanded');
         initSlideshow(card);
+        
+        // Change hint text
+        const hint = card.querySelector('.expand-hint');
+        if (hint) hint.textContent = 'Click again to minimize this tab';
     }
 }
 
@@ -37,9 +44,9 @@ function changeSlide(btn, direction) {
     const slideshow = btn.parentElement;
     const slides = slideshow.querySelectorAll('.slide');
     const indicators = slideshow.parentElement.querySelectorAll('.indicator');
-    
+
     currentSlides[slideshow] = (currentSlides[slideshow] || 0) + direction;
-    
+
     // Wrap around
     if (currentSlides[slideshow] >= slides.length) {
         currentSlides[slideshow] = 0;
@@ -53,18 +60,19 @@ function changeSlide(btn, direction) {
 function goToSlide(slideshow, index) {
     const slides = slideshow.querySelectorAll('.slide');
     const indicators = slideshow.parentElement.querySelectorAll('.indicator');
+
     currentSlides[slideshow] = index;
     updateSlideshow(slideshow, slides, indicators);
 }
 
 function updateSlideshow(slideshow, slides, indicators) {
     const current = currentSlides[slideshow];
-    
+
     // Update slide visibility
     slides.forEach((slide, index) => {
         slide.classList.toggle('active', index === current);
     });
-    
+
     // Update indicator dots
     indicators.forEach((indicator, index) => {
         indicator.classList.toggle('active', index === current);
