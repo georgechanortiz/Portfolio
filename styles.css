@@ -266,15 +266,15 @@ a::after {
 }
 
 
-
 .educationicon {
-  width: 75px;
-  height: 75px;
+  width: 90px;  
+  height: 90px; 
   border-radius: 10px;
   background-color: white;
   margin-right: 1.5rem;
   flex-shrink: 0;
 }
+
 
 .education-text {
   display: flex;
@@ -332,14 +332,14 @@ a::after {
   align-items: center;
   width: 100%;
   max-width: 600px;
-  margin-bottom: 2rem;
+  margin-bottom: 3.5rem; 
   margin-left: auto;
   margin-right: auto; 
 }
 
 .workicon {
-  width: 75px;
-  height: 75px;
+  width: 90px;
+  height: 90px;
   border-radius: 10px;
   background-color: white;
   margin-right: 1.5rem;
@@ -387,7 +387,7 @@ a::after {
   padding: 0;
   list-style: none;
   margin-top: 0px;
-  margin-bottom: 0px;
+  margin-bottom: 10px;
 }
 
 .experience-list li {
