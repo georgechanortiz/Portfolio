@@ -488,6 +488,7 @@ a::after {
   font-family: "Anek Devanagari", sans-serif;
   opacity: 0;
   transition: all 0.8s cubic-bezier(0.4, 0.0, 0.2, 1);
+  backdrop-filter: blur(2px);
 }
 
 .carousel-slide.active .carousel-caption {
