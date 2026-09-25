@@ -15,10 +15,8 @@
   <div class="wrap">
     <a class="mark" href="index.html">GEORGE ORTIZ<span></span></a>
     <nav>
-      <a href="#about">About</a>
-      <a href="#news">News</a>
-      <a href="#experience">Experience</a>
-      <a href="#projects">Projects</a>
+      <a href="#about">About Me</a>
+      <!-- <a href="#experience">Experience</a> -->
       <a href="robotics.html">Robotics</a>
       <a href="miscellaneous.html">Extracurriculars</a>
       <a href="resume.html">Resume</a>
@@ -26,28 +24,25 @@
   </div>
 </header>
 
-<!-- ===================== HERO ===================== -->
-<section class="hero">
-  <img src="Files/RoboticsProjs/GradResearch/MPMSimwith2Muds.gif"
-       alt="Quadruped robot walking through simulated mud in an MPM environment">
-  <div class="wrap">
-    <div class="label">Robotics Researcher — Carnegie Mellon</div>
-    <h1>George Ortiz</h1>
-    <!-- <p class="pitch">
-      Designing robust control policies for legged robots that can walk quickly through mud. 
-      Mud is a non-Newtonian fluid, making it a challenge for the robot to walk through as it experiences a range of forces as it steps in and out of the mud. 
-      I model these forces so that a quadruped can adapt its gait in real time to maintain stability and traction.
-
-
-    </p> -->
-    <div class="actions">
-      <a class="btn solid" href="#about">About me</a>
-      <a class="btn" href="#news">Recent news</a>
-      <a class="btn" href="robotics.html">Robotics projects</a>
-      <a class="btn" href="resume.html">Resume</a>
-    </div>
+<!-- ===================== MUD BANNER ===================== -->
+<section class="banner" aria-label="Interactive quadruped walking through mud">
+  <h1 class="visually-hidden">George Ortiz</h1>
+  <canvas id="mud-banner" tabindex="0" role="img"
+          aria-label="Interactive mud field with a quadruped robot. Drag across the mud to lead the robot, or grab the robot to pick it up and toss it. It patrols the mud on its own; arrow keys nudge its goal."></canvas>
+  <p class="banner-hint">drag to lead the robot · grab it to toss it</p>
+  <div class="banner-actions">
+    <label class="visually-hidden" for="banner-terrain">Terrain</label>
+    <select id="banner-terrain" class="banner-terrain">
+      <option value="firm">Firm soil</option>
+      <option value="wet">Wet mud</option>
+      <option value="slurry">Slurry</option>
+      <option value="vines">Vines</option>
+    </select>
   </div>
 </section>
+
+<!-- ===================== HERO ===================== -->
+
 
 <main class="wrap">
 
@@ -56,17 +51,17 @@
     <div>
       <div class="label">Who I am</div>
       <p class="body-text">
-        I'm a second-year Master's student on the Mechanical Engineering Research track at Carnegie Mellon University. 
         My research in the <a href="https://www.cmu.edu/me/robomechanicslab/">Robomechanics Lab</a>,  advised by  
         <a href="https://www.meche.engineering.cmu.edu/directory/bios/johnson-aaron.html">Prof. Aaron Johnson</a>,
-        involves robot simulation and reinforcement learning. I am working on developing robust control policies 
-        for quadruped locomotion over complex, contact-rich natural environments. 
+        involves simulating robots in different environments, deploying policies and running hardware experiments, and designing robust learned 
+        controllers over complex, contact-rich natural environments. 
+
       </p>
       <p class="body-text">
-        Before CMU, I earned a B.E. in Mechanical Engineering at Stevens, where I worked with
-        <a href="https://www.stevens.edu/profile/kpochira">Prof. Kishore Pochiraju</a> on implementing computer vision
-        for robot manipulation pick and place tasks. 
-        Outside the lab, I enjoy spending my time woodworking and cooking delicious food.
+        Prior to CMU, I earned my Bachelors of Engineering in Mechanical Engineering from Stevens institute of Technology, where I worked 
+        in the <a href="https://prooflab.stevens.edu/">PROOF Lab</a> under 
+        <a href="https://www.stevens.edu/profile/kpochira">Prof. Kishore Pochiraju</a>.
+        I'm originally from Queens, NYC and am currently based in Pittsburgh. 
       </p>
     </div>
     <img src="Files/headshot.jpg" alt="George Ortiz">
@@ -80,7 +75,30 @@
     </div>
 
     <ul class="news">
+
+
       <li class="latest">
+        <div class="when">Sep 2026</div>
+        <div class="item">
+          <div>
+            <p>
+              I attended the MaGIC 2026 (Machine-Ground Interaction Consortium) conference, where I  
+              presented a poster on my research on reduced order modeling for locomotion through deep mud. 
+              <a href="https://sbel.wisc.edu/outreach/magic/magic-2026/"
+                 target="_blank" rel="noopener">Conference Link</a>
+            </p>
+          </div>
+          <a class="thumb-link"
+             href="https://example.com/article"
+             target="_blank" rel="noopener">
+            <img src="Files/RoboticsProjs/magic-2026-group-pic.JPG" alt="Short description of the image">
+          </a>
+        </div>
+      </li>
+
+
+    
+      <li>
         <div class="when">May 2026</div>
         <div class="item">
           <div>
@@ -117,10 +135,34 @@
           </a>
         </div>
       </li>
+
+      <!-- 
+
+      <li class="latest">
+        <div class="when">Month Year</div>
+        <div class="item">
+          <div>
+            <p>
+              One or two sentences about what happened. Use <b>bold</b> for
+              names of people, labs, or companies worth highlighting.
+              <a href="https://example.com/article"
+                 target="_blank" rel="noopener">Link Text</a>
+            </p>
+          </div>
+          <a class="thumb-link"
+             href="https://example.com/article"
+             target="_blank" rel="noopener">
+            <img src="Files/Home/your-image.webp" alt="Short description of the image">
+          </a>
+        </div>
+      </li>
+      
+ -->
     </ul>
   </section>
 
   <!-- ===================== EXPERIENCE ===================== -->
+  <!-- Hidden: covered by the resume
   <section id="experience">
     <div class="sec-head">
       <div class="label">02 — Experience</div>
@@ -169,8 +211,10 @@
       </div>
     </div>
   </section>
+  -->
 
   <!-- ===================== EDUCATION ===================== -->
+  <!-- Hidden: covered by the About section and resume
   <section id="education">
     <div class="sec-head">
       <div class="label">03 — Education</div>
@@ -195,11 +239,12 @@
       </div>
     </div>
   </section>
+  -->
 
   <!-- ===================== PROJECTS ===================== -->
   <section id="projects">
     <div class="sec-head">
-      <div class="label">04 — Selected projects</div>
+      <div class="label">02 — Selected projects</div>
       <h2>Selected projects</h2>
     </div>
 
@@ -248,7 +293,7 @@
         <div class="thumb"><img src="Files/MiscProjs/GNPResearch/GoldNanoparticles.png" alt="Gold nanoparticle solutions of varying concentration"></div>
         <div class="txt">
           <h3>Extracurricular work</h3>
-          <p>Gold nanoparticle research, woodworking, machining, and other side quests.</p>
+          <p>Gold nanoparticle research, woodworking, machining, and other ventures.</p>
         </div>
       </a>
     </div>
@@ -266,5 +311,6 @@
   </div>
 </footer>
 
+<script src="mudbot.js" defer></script>
 </body>
 </html>

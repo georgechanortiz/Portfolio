@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LEAP Hand</title>
+<!-- Hand model: LEAP Hand (leap-hand/LEAP_Hand_Sim), MIT License, see LEAP_HAND_LICENSE.txt.
+     Meshes decimated and packed into leap_hand.bin. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  html, body { margin: 0; height: 100%; overflow: hidden; background: #0b0c0d; color: #f0f2f4; font-family: "Epilogue", sans-serif; }
+  #stage { position: fixed; inset: 0; }
+  #stage canvas { display: block; cursor: grab; touch-action: none; outline: none; }
+  #stage canvas.pointing { cursor: pointer; }
+  #stage canvas.dragging { cursor: grabbing; }
+  .hint {
+    position: fixed; left: 50%; bottom: 22px; transform: translateX(-50%);
+    margin: 0; padding: 6px 12px; border-radius: 999px;
+    font-size: 12px; letter-spacing: .02em; white-space: nowrap; pointer-events: none;
+    background: rgba(11,12,13,.62); -webkit-backdrop-filter: blur(5px); backdrop-filter: blur(5px);
+    border: 1px solid rgba(255,255,255,.08);
+    transition: opacity .45s ease, transform .45s ease;
+  }
+  .hint.dismissed { opacity: 0; transform: translate(-50%, 5px); }
+  .fallback { position: fixed; inset: 0; display: grid; place-items: center; padding: 0 24px; text-align: center; color: #8b939c; font-size: 14px; }
+  @media (prefers-reduced-motion: reduce) { .hint { transition: none; } }
+</style>
+</head>
+<body>
+
+<div id="stage" role="img"
+     aria-label="A LEAP robot hand holding a Rubik's cube. Click a face of the cube and the hand rolls it so that face is on top. Drag to look around."></div>
+<p class="hint">loading hand…</p>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+(() => {
+  const stage = document.getElementById('stage');
+  const hintEl = document.querySelector('.hint');
+  const fail = msg => { stage.innerHTML = `<div class="fallback">${msg}</div>`; hintEl.hidden = true; };
+  if (!window.THREE) return fail('The 3D scene could not load.');
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // ---------- helpers ----------
+  const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
+  const lerp = (a, b, t) => a + (b - a) * t;
+  const smooth = (a, b, t) => { const u = clamp((t - a) / (b - a), 0, 1); return u * u * (3 - 2 * u); };
+  const rand = (a, b) => a + Math.random() * (b - a);
+  const pick = arr => arr[Math.floor(Math.random() * arr.length)];
+  const blend = (a, b, w) => a.map((v, i) => lerp(v, b[i], w));
+  const lin = hex => new THREE.Color(hex).convertSRGBToLinear(); // r128 treats hex as linear
+
+  // ---------- LEAP Hand kinematics (from robot.urdf) ----------
+  // [link, mesh, visual xyz, visual rpy]
+  const LINKS = [
+    ["palm_lower", "palm_lower", [-0.020095, 0.025758, -0.034722], [0.0, 0, 0.0]],
+    ["mcp_joint", "mcp_joint", [0.008407, 0.007766, 0.014657], [0.0, 0, 0.0]],
+    ["pip", "pip", [0.009643, 0.0003, 0.000784], [-1.570796, -1.570796, 0.0]],
+    ["dip", "dip", [0.021133, -0.008432, 0.009785], [-3.141593, 0.0, 0.0]],
+    ["fingertip", "fingertip", [0.013286, -0.006114, 0.0145], [3.141593, 0.0, 0.0]],
+    ["mcp_joint_2", "mcp_joint", [0.008407, 0.007766, 0.014657], [0.0, 0, 0.0]],
+    ["pip_2", "pip", [0.009643, 0.0003, 0.000784], [-1.570796, -1.570796, 0.0]],
+    ["dip_2", "dip", [0.021133, -0.008432, 0.009785], [-3.141593, 0.0, 0.0]],
+    ["fingertip_2", "fingertip", [0.013286, -0.006114, 0.0145], [3.141593, 0, 0.0]],
+    ["mcp_joint_3", "mcp_joint", [0.008407, 0.007766, 0.014657], [0.0, 0, 0.0]],
+    ["pip_3", "pip", [0.009643, 0.0003, 0.000784], [-1.570796, -1.570796, 0.0]],
+    ["dip_3", "dip", [0.021133, -0.008432, 0.009785], [-3.141593, 0, 0.0]],
+    ["fingertip_3", "fingertip", [0.013286, -0.006114, 0.0145], [3.141593, 0.0, 0.0]],
+    ["pip_4", "pip", [-0.005357, 0.0003, 0.000784], [-1.570796, -1.570796, 0.0]],
+    ["thumb_pip", "thumb_pip", [0.011962, 0, -0.015853], [1.570796, 0.0, 0]],
+    ["thumb_dip", "thumb_dip", [0.043969, 0.057953, -0.008629], [0.0, 0.0, 0.0]],
+    ["thumb_fingertip", "thumb_fingertip", [0.06256, 0.07846, 0.048993], [0.0, 0, 0.0]]
+  ];
+  const JOINTS = [
+    ["0", "mcp_joint", "pip", [-0.0122, 0.0381, 0.0145], [-1.570796, 0, 1.570796]],
+    ["1", "palm_lower", "mcp_joint", [-0.007095, 0.023058, -0.018722], [1.570796, 1.570796, 0.0]],
+    ["2", "pip", "dip", [0.015, 0.0143, -0.013], [1.570796, -1.570796, 0.0]],
+    ["3", "dip", "fingertip", [0, -0.0361, 0.0002], [0.0, 0, 0.0]],
+    ["4", "mcp_joint_2", "pip_2", [-0.0122, 0.0381, 0.0145], [-1.570796, 0, 1.570796]],
+    ["5", "palm_lower", "mcp_joint_2", [-0.007095, -0.022392, -0.018722], [1.570796, 1.570796, 0.0]],
+    ["6", "pip_2", "dip_2", [0.015, 0.0143, -0.013], [1.570796, -1.570796, 0.0]],
+    ["7", "dip_2", "fingertip_2", [0.0, -0.0361, 0.0002], [0.0, 0, 0.0]],
+    ["8", "mcp_joint_3", "pip_3", [-0.0122, 0.0381, 0.0145], [-1.570796, 0, 1.570796]],
+    ["9", "palm_lower", "mcp_joint_3", [-0.007095, -0.067842, -0.018722], [1.570796, 1.570796, 0.0]],
+    ["10", "pip_3", "dip_3", [0.015, 0.0143, -0.013], [1.570796, -1.570796, 0.0]],
+    ["11", "dip_3", "fingertip_3", [0.0, -0.0361, 0.0002], [0.0, 0, 0.0]],
+    ["12", "palm_lower", "pip_4", [-0.069395, -0.001242, -0.021622], [0, 1.570796, 0.0]],
+    ["13", "pip_4", "thumb_pip", [0, 0.0143, -0.013], [1.570796, -1.570796, 0.0]],
+    ["14", "thumb_pip", "thumb_dip", [0.0, 0.0145, -0.017], [-1.570796, 0.0, 0]],
+    ["15", "thumb_dip", "thumb_fingertip", [0, 0.0466, 0.0002], [0.0, 0.0, 3.141593]]
+  ];
+  // mesh: [vertexCount, triCount, vertexByteOffset, indexByteOffset, bboxMin, bboxMax] in leap_hand.bin
+  const MESHES = {"palm_lower": [5027, 10432, 0, 30162, [-0.08, -0.1260512, -0.0], [0.0234865, 6.21e-05, 0.046]], "mcp_joint": [2325, 4826, 92756, 106706, [-0.0494149, -0.015491, -0.0177226], [0.0021307, 0.0563856, 0.0183482]], "pip": [3059, 6306, 135664, 154018, [-0.0253222, -0.0207261, -0.0149457], [-0.000448, 0.0154487, 0.0147652]], "dip": [2041, 4306, 191856, 204102, [-0.0322774, -0.0161605, -0.0221805], [0.0049237, 0.0381137, 0.0127838]], "fingertip": [2792, 5622, 229940, 246692, [-0.0243853, -0.0141882, -0.0173976], [-0.0028737, 0.0434747, 0.0174319]], "thumb_pip": [2045, 4218, 280424, 292694, [-0.0225578, -0.0092053, -0.0174349], [-0.0015196, 0.0158535, 0.0174501]], "thumb_dip": [1960, 4062, 318004, 329764, [-0.062469, -0.0687728, -0.0234348], [-0.0329683, -0.0037093, 0.0117943]], "thumb_fingertip": [3847, 7780, 354136, 377218, [-0.0740764, -0.1409273, -0.079793], [-0.0440527, -0.0676407, -0.046793]]};
+
+  // ---------- renderer / scene ----------
+  let renderer;
+  try { renderer = new THREE.WebGLRenderer({ antialias: true }); }
+  catch (e) { return fail('WebGL is not available in this browser.'); }
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+  renderer.outputEncoding = THREE.sRGBEncoding;
+  renderer.toneMapping = THREE.ACESFilmicToneMapping;
+  renderer.shadowMap.enabled = true;
+  renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+  renderer.domElement.tabIndex = 0;
+  stage.appendChild(renderer.domElement);
+
+  const scene = new THREE.Scene();
+  scene.background = new THREE.Color(0x0b0c0d);
+  scene.fog = new THREE.Fog(lin(0x0b0c0d), 14, 30);
+
+  const camera = new THREE.PerspectiveCamera(32, 1, 0.1, 100);
+  const target = new THREE.Vector3(0.9, 0.35, 0.4);
+
+  scene.add(new THREE.HemisphereLight(0xdfe6ee, 0x1a1410, 0.5));
+  const key = new THREE.DirectionalLight(0xffffff, 1.1);
+  key.position.set(5, 8, 7);
+  key.castShadow = true;
+  key.shadow.mapSize.set(2048, 2048);
+  Object.assign(key.shadow.camera, { left: -6, right: 6, top: 6, bottom: -6, near: 1, far: 30 });
+  key.shadow.radius = 4;
+  key.shadow.bias = -0.0004;
+  scene.add(key);
+  const fill = new THREE.DirectionalLight(0xbfd2ff, 0.45);
+  fill.position.set(-6, 3, 5);
+  scene.add(fill);
+  const rim = new THREE.DirectionalLight(0xc0262a, 0.3); // accent rim from behind
+  rim.position.set(-4, 1.2, -7);
+  scene.add(rim);
+
+  const FLOOR_Y = -2.3;
+  const floor = new THREE.Mesh(new THREE.PlaneGeometry(60, 60), new THREE.ShadowMaterial({ opacity: 0.38 }));
+  floor.rotation.x = -Math.PI / 2;
+  floor.position.y = FLOOR_Y;
+  floor.receiveShadow = true;
+  scene.add(floor);
+  const grid = new THREE.GridHelper(60, 60, lin(0x2a2d31), lin(0x1c1e21));
+  grid.position.y = FLOOR_Y + 0.001;
+  scene.add(grid);
+
+  // ---------- materials ----------
+  const mat = (hex, roughness, metalness = 0) =>
+    new THREE.MeshStandardMaterial({ color: lin(hex), roughness, metalness });
+  const M = {
+    body: mat(0x1d2023, 0.55, 0.15),    // Dynamixel servos and printed housings
+    bracket: mat(0xbfc4c9, 0.6, 0.2),   // small linkage brackets
+    tip: mat(0xe8e9eb, 0.8),            // printed fingertips
+    stand: mat(0x2a2f34, 0.5, 0.45),
+    accent: mat(0x790000, 0.5, 0.3),
+    cubie: mat(0x0d0e10, 0.55, 0.1),
+  };
+  const LINK_MAT = {
+    palm_lower: 'body', mcp_joint: 'body', pip: 'bracket', dip: 'body', fingertip: 'tip',
+    thumb_pip: 'bracket', thumb_dip: 'body', thumb_fingertip: 'tip',
+  };
+  const shadowy = obj => obj.traverse(o => { if (o.isMesh) { o.castShadow = true; o.receiveShadow = true; } });
+
+  // ---------- hand ----------
+  // Scene frame: palm faces up (+Y) with its top at y = 0, fingers point along +X, thumb on the +Z side.
+  const hand = new THREE.Group();
+  scene.add(hand);
+
+  const leap = new THREE.Group();
+  leap.scale.setScalar(20);                 // metres -> scene units
+  leap.rotation.x = Math.PI / 2;            // URDF palm normal (-Z) -> +Y
+  leap.position.set(1.0, -0.7, 0.74);       // centre the palm top on the origin
+  hand.add(leap);
+
+  const urdfEuler = rpy => new THREE.Euler(rpy[0], rpy[1], rpy[2], 'ZYX');
+  const linkObj = { palm_lower: new THREE.Group() };
+  leap.add(linkObj.palm_lower);
+  const jointObj = {};
+  const pending = JOINTS.slice();
+  while (pending.length) {
+    const i = pending.findIndex(j => linkObj[j[1]]);
+    const [name, parent, child, xyz, rpy] = pending.splice(i, 1)[0];
+    const origin = new THREE.Group();
+    origin.position.fromArray(xyz);
+    origin.rotation.copy(urdfEuler(rpy));
+    const moving = new THREE.Group();
+    origin.add(moving);
+    linkObj[parent].add(origin);
+    linkObj[child] = moving;
+    jointObj[name] = moving;
+  }
+  const AXIS = new THREE.Vector3(0, 0, -1);
+  const setJoint = (name, a) => jointObj[name].quaternion.setFromAxisAngle(AXIS, a);
+
+  // Robot stand under the palm
+  const stand = new THREE.Mesh(new THREE.CylinderGeometry(0.62, 0.72, 1.3, 40), M.stand);
+  stand.position.set(0, -1.6, 0);
+  hand.add(stand);
+  const ring = new THREE.Mesh(new THREE.CylinderGeometry(0.66, 0.66, 0.14, 40), M.accent);
+  ring.position.set(0, -1.02, 0);
+  hand.add(ring);
+
+  // Split normals at hard edges so machined parts stay crisp and curved parts stay smooth
+  function buildGeometry(buf, [nv, nt, vo, io, mn, mx]) {
+    const q = new Uint16Array(buf, vo, nv * 3), idx = new Uint16Array(buf, io, nt * 3);
+    const P = new Float32Array(nv * 3);
+    for (let i = 0; i < nv * 3; i++) P[i] = mn[i % 3] + q[i] / 65535 * (mx[i % 3] - mn[i % 3]);
+    const fn = new Float32Array(nt * 3), fu = new Float32Array(nt * 3);
+    for (let t = 0; t < nt; t++) {
+      const a = idx[t * 3] * 3, b = idx[t * 3 + 1] * 3, c = idx[t * 3 + 2] * 3;
+      const ux = P[b] - P[a], uy = P[b + 1] - P[a + 1], uz = P[b + 2] - P[a + 2];
+      const vx = P[c] - P[a], vy = P[c + 1] - P[a + 1], vz = P[c + 2] - P[a + 2];
+      const nx = uy * vz - uz * vy, ny = uz * vx - ux * vz, nz = ux * vy - uy * vx;
+      const l = Math.hypot(nx, ny, nz) || 1;
+      fn[t * 3] = nx; fn[t * 3 + 1] = ny; fn[t * 3 + 2] = nz;
+      fu[t * 3] = nx / l; fu[t * 3 + 1] = ny / l; fu[t * 3 + 2] = nz / l;
+    }
+    const start = new Uint32Array(nv + 1);
+    for (let i = 0; i < nt * 3; i++) start[idx[i] + 1]++;
+    for (let v = 0; v < nv; v++) start[v + 1] += start[v];
+    const fill = start.slice(0, nv), faces = new Uint32Array(nt * 3);
+    for (let i = 0; i < nt * 3; i++) faces[fill[idx[i]]++] = (i / 3) | 0;
+    const COS = Math.cos(38 * Math.PI / 180);
+    const pos = new Float32Array(nt * 9), nrm = new Float32Array(nt * 9);
+    for (let t = 0; t < nt; t++) for (let k = 0; k < 3; k++) {
+      const v = idx[t * 3 + k], o = (t * 3 + k) * 3;
+      pos[o] = P[v * 3]; pos[o + 1] = P[v * 3 + 1]; pos[o + 2] = P[v * 3 + 2];
+      let sx = 0, sy = 0, sz = 0;
+      for (let s = start[v]; s < start[v + 1]; s++) {
+        const f = faces[s];
+        if (fu[f * 3] * fu[t * 3] + fu[f * 3 + 1] * fu[t * 3 + 1] + fu[f * 3 + 2] * fu[t * 3 + 2] < COS) continue;
+        sx += fn[f * 3]; sy += fn[f * 3 + 1]; sz += fn[f * 3 + 2];
+      }
+      const l = Math.hypot(sx, sy, sz) || 1;
+      nrm[o] = sx / l; nrm[o + 1] = sy / l; nrm[o + 2] = sz / l;
+    }
+    const g = new THREE.BufferGeometry();
+    g.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+    g.setAttribute('normal', new THREE.BufferAttribute(nrm, 3));
+    return g;
+  }
+
+  // ---------- cube ----------
+  const S = 0.5; // cubie spacing
+  const CUBE_REST = new THREE.Vector3(0.2, 0.76, 0);
+  const cube = new THREE.Group();
+  cube.position.copy(CUBE_REST);
+  hand.add(cube);
+
+  const COLORS = { px: 0xb71c1c, nx: 0xe8711c, py: 0xeeeeee, ny: 0xf0c419, pz: 0x1f9d55, nz: 0x1e5bd8 };
+  const stickerShape = (() => {
+    const w = 0.42, r = 0.07, h = w / 2;
+    const s = new THREE.Shape();
+    s.moveTo(-h + r, -h); s.lineTo(h - r, -h); s.quadraticCurveTo(h, -h, h, -h + r);
+    s.lineTo(h, h - r); s.quadraticCurveTo(h, h, h - r, h); s.lineTo(-h + r, h);
+    s.quadraticCurveTo(-h, h, -h, h - r); s.lineTo(-h, -h + r); s.quadraticCurveTo(-h, -h, -h + r, -h);
+    return new THREE.ShapeGeometry(s, 4);
+  })();
+  const cubieGeo = new THREE.BoxGeometry(S * 0.97, S * 0.97, S * 0.97);
+  const stickers = [];
+  const FACES = [
+    { key: 'px', n: [1, 0, 0] }, { key: 'nx', n: [-1, 0, 0] },
+    { key: 'py', n: [0, 1, 0] }, { key: 'ny', n: [0, -1, 0] },
+    { key: 'pz', n: [0, 0, 1] }, { key: 'nz', n: [0, 0, -1] },
+  ];
+  for (let x = -1; x <= 1; x++) for (let y = -1; y <= 1; y++) for (let z = -1; z <= 1; z++) {
+    const cubie = new THREE.Mesh(cubieGeo, M.cubie);
+    cubie.position.set(x * S, y * S, z * S);
+    for (const f of FACES) {
+      const [nx, ny, nz] = f.n;
+      if ((nx && nx !== x) || (ny && ny !== y) || (nz && nz !== z)) continue;
+      const m = new THREE.MeshStandardMaterial({ color: lin(COLORS[f.key]), roughness: 0.6, emissive: 0xffffff, emissiveIntensity: 0 });
+      const st = new THREE.Mesh(stickerShape, m);
+      const n = new THREE.Vector3(nx, ny, nz);
+      st.position.copy(n).multiplyScalar(S * 0.487);
+      st.quaternion.setFromUnitVectors(new THREE.Vector3(0, 0, 1), n);
+      cubie.add(st);
+      stickers.push(st);
+    }
+    cube.add(cubie);
+  }
+  shadowy(cube);
+
+  const _m = new THREE.Matrix4();
+  function snapQuat(q) {
+    _m.makeRotationFromQuaternion(q);
+    const e = _m.elements;
+    for (const i of [0, 1, 2, 4, 5, 6, 8, 9, 10]) e[i] = Math.round(e[i]);
+    q.setFromRotationMatrix(_m);
+  }
+  function snapCubie(c) {
+    c.position.set(Math.round(c.position.x / S) * S, Math.round(c.position.y / S) * S, Math.round(c.position.z / S) * S);
+    snapQuat(c.quaternion);
+  }
+
+  // ---------- poses (real LEAP joint angles, radians) ----------
+  // fingers: index (next to thumb), middle, ring -> [abduction, mcp, pip, dip]
+  const FJ = [['0', '1', '2', '3'], ['4', '5', '6', '7'], ['8', '9', '10', '11']];
+  const TJ = ['12', '13', '14', '15'];
+  const FAN = [-0.16, 0, 0.16]; // relaxed spread
+  const P = {
+    rest:  { f: [0.28, 0.32, 0.25],  t: [0.85, 0.1, 0.3, 0.25] },
+    grip:  { f: [0.9, 0.52, 0.4],     t: [1.35, 0.1, 0.35, 0.3] },
+    push:  { f: [1.2, 0.8, 0.6],     t: [1.1, 0.1, 0.3, 0.2] },   // fingers flick the cube over
+    open:  { f: [-0.25, 0.0, 0.0],   t: [1.35, 0.1, 0.35, 0.3] }, // fingers open to catch
+    tpush: { f: [0.85, 0.48, 0.38],   t: [1.8, 0.35, 0.75, 0.55] }, // thumb shoves the cube over
+    recv:  { f: [0.85, 0.48, 0.38],   t: [0.05, 0, 0, 0] },         // thumb opens to catch
+    lift:  { f: [-0.3, 0.15, 0.1] },
+  };
+  const makePose = (f, t, calm, abd) => ({ f, t, calm, abd: abd || FAN.map(a => a * calm) });
+  const restPose = () => makePose([P.rest.f, P.rest.f, P.rest.f], P.rest.t, 1);
+
+  function applyPose(pose, time) {
+    const wig = reduced ? 0 : pose.calm;
+    for (let i = 0; i < 3; i++) {
+      const rip = 0.08 * wig * Math.sin(time * 2.1 - i * 0.95); // travelling ripple across the fingers
+      const [mcp, pip, dip] = pose.f[i];
+      setJoint(FJ[i][0], pose.abd[i] + 0.06 * wig * Math.sin(time * 0.9 + i * 1.7));
+      setJoint(FJ[i][1], mcp + rip);
+      setJoint(FJ[i][2], pip + rip * 0.8);
+      setJoint(FJ[i][3], dip + rip * 0.6);
+    }
+    setJoint(TJ[0], pose.t[0] + 0.06 * wig * Math.sin(time * 1.1));
+    setJoint(TJ[1], pose.t[1] + 0.12 * wig * Math.sin(time * 0.7 + 1));
+    setJoint(TJ[2], pose.t[2] + 0.06 * wig * Math.sin(time * 1.3 + 2));
+    setJoint(TJ[3], pose.t[3]);
+  }
+
+  // ---------- actions ----------
+  let action = null;
+  const queue = [];
+  const handTilt = new THREE.Quaternion();
+  const _q = new THREE.Quaternion();
+  const AX = { x: new THREE.Vector3(1, 0, 0), y: new THREE.Vector3(0, 1, 0), z: new THREE.Vector3(0, 0, 1) };
+
+  // Per-finger grip envelope; fingers engage one after another (index first)
+  const envelope = (t, i, lagSign = 1) => {
+    const ti = t - 0.05 * (lagSign > 0 ? i : 2 - i);
+    return { g: smooth(0, 0.22, ti) * (1 - smooth(0.8, 0.9, ti)), b: Math.sin(Math.PI * smooth(0.24, 0.8, ti)) };
+  };
+
+  // Roll the whole cube in the palm; style picks which digits do the work
+  function rollAction(axis, angle, style, dur) {
+    const q0 = new THREE.Quaternion(), q1 = new THREE.Quaternion();
+    const spin = style === 'spin';
+    const tiltSign = spin ? 0 : Math.sign(angle);
+    return {
+      dur,
+      begin() { q0.copy(cube.quaternion); q1.setFromAxisAngle(axis, angle).multiply(q0); },
+      update(t) {
+        const r = smooth(0.24, 0.8, t);
+        const bell = Math.sin(Math.PI * r);
+        cube.quaternion.copy(q0).slerp(q1, r);
+        cube.position.copy(CUBE_REST);
+        cube.position.y += (spin ? 0.1 : 0.38) * bell;
+        cube.position.x += (style === 'push' ? -0.12 : style === 'open' ? 0.14 : 0) * bell;
+        cube.position.z += (style === 'tpush' ? -0.1 : style === 'recv' ? 0.1 : 0) * bell;
+        handTilt.setFromAxisAngle(axis, tiltSign * 0.14 * bell);
+
+        const st = P[style] || P.grip;
+        const tg = smooth(0, 0.2, t) * (1 - smooth(0.82, 1, t));
+        const f = [], abd = [];
+        for (let i = 0; i < 3; i++) {
+          const { g, b } = envelope(t, i, style === 'open' ? -1 : 1);
+          let fp = blend(blend(P.rest.f, P.grip.f, g), st.f, b * g);
+          let a = FAN[i] * (1 - g);
+          if (spin) {
+            // finger gaiting: each finger sweeps sideways to walk the cube round, then lifts and resets
+            const ph = (r * 2 + i / 3) % 1;
+            const stance = ph < 0.65;
+            const sweep = stance ? lerp(-0.3, 0.3, ph / 0.65) : lerp(0.3, -0.3, (ph - 0.65) / 0.35);
+            a += Math.sign(angle) * sweep * g * (r > 0 && r < 1 ? 1 : 0);
+            if (!stance) fp = blend(fp, [0.55, 0.35, 0.25], g * Math.sin(Math.PI * (ph - 0.65) / 0.35));
+          }
+          f.push(fp); abd.push(a);
+        }
+        const t4 = blend(blend(P.rest.t, P.grip.t, tg), st.t, bell * tg);
+        return makePose(f, t4, 1 - tg, abd);
+      },
+      end() { cube.quaternion.copy(q1); snapQuat(cube.quaternion); cube.position.copy(CUBE_REST); handTilt.identity(); },
+    };
+  }
+
+  // Twist the layer on top: thumb and index pinch it round while the others hold the rest
+  function twistAction(dir) {
+    const pivot = new THREE.Group();
+    const axisLocal = new THREE.Vector3();
+    let layer = [];
+    return {
+      dur: 1.0,
+      begin() {
+        cube.add(pivot);
+        pivot.quaternion.identity();
+        axisLocal.set(0, 1, 0).applyQuaternion(_q.copy(cube.quaternion).invert());
+        const p = new THREE.Vector3();
+        layer = cube.children.filter(c => c !== pivot && p.copy(c.position).applyQuaternion(cube.quaternion).y > S * 0.5);
+        layer.forEach(c => pivot.attach(c));
+      },
+      update(t) {
+        const g = smooth(0, 0.25, t) * (1 - smooth(0.8, 1, t));
+        const r = smooth(0.25, 0.8, t);
+        pivot.quaternion.setFromAxisAngle(axisLocal, dir * Math.PI / 2 * r);
+        const hold = blend(P.rest.f, [0.8, 0.45, 0.35], g);
+        const pinch = blend(P.rest.f, [1.1, 0.55, 0.45], g);
+        const abd = FAN.map((a, i) => a * (1 - g) + (i === 0 ? -dir * 0.18 * Math.sin(Math.PI * r) * g : 0));
+        const thumb = blend(P.rest.t, [1.5, 0.3 + dir * 0.25 * Math.sin(Math.PI * r), 0.45, 0.35], g);
+        return makePose([pinch, hold, hold], thumb, 1 - g, abd);
+      },
+      end() {
+        pivot.quaternion.setFromAxisAngle(axisLocal, dir * Math.PI / 2);
+        pivot.updateMatrixWorld();
+        layer.forEach(c => { cube.attach(c); snapCubie(c); });
+        cube.remove(pivot);
+      },
+    };
+  }
+
+  // Idle fidget: drum the fingertips one after another, then the thumb taps in
+  function drumAction() {
+    const order = pick([[0, 1, 2, 1, 0], [2, 1, 0, 1, 2], [0, 2, 1, 0, 2]]);
+    return {
+      dur: 1.6,
+      begin() {},
+      update(t) {
+        const f = [P.rest.f.slice(), P.rest.f.slice(), P.rest.f.slice()];
+        order.forEach((fi, k) => {
+          const s = clamp((t - k * 0.14) / 0.24, 0, 1);
+          if (s <= 0 || s >= 1) return;
+          const up = Math.sin(Math.PI * s);
+          f[fi] = blend(f[fi], P.lift.f, up);
+        });
+        const ts = clamp((t - 0.72) / 0.28, 0, 1);
+        const thumb = blend(P.rest.t, [0.9, 0.6, 0.6, 0.5], Math.sin(Math.PI * ts));
+        return makePose(f, thumb, 0.4);
+      },
+      end() {},
+    };
+  }
+
+  // Bring the face whose cube-local normal is nLocal to the top
+  function faceAction(nLocal) {
+    const d = nLocal.clone().applyQuaternion(cube.quaternion);
+    const ax = Math.abs(d.x), ay = Math.abs(d.y), az = Math.abs(d.z);
+    if (ay >= ax && ay >= az) {
+      return d.y > 0 ? rollAction(AX.y, pick([1, -1]) * Math.PI / 2, 'spin', 1.3)
+                     : rollAction(AX.x, -Math.PI, 'tpush', 1.7);
+    }
+    if (ax >= az) return d.x > 0 ? rollAction(AX.z, Math.PI / 2, 'push', 1.25)
+                                 : rollAction(AX.z, -Math.PI / 2, 'open', 1.25);
+    return d.z > 0 ? rollAction(AX.x, -Math.PI / 2, 'tpush', 1.25)
+                   : rollAction(AX.x, Math.PI / 2, 'recv', 1.25);
+  }
+
+  function randomPlay() {
+    const r = Math.random();
+    if (r < 0.35) return twistAction(pick([1, -1]));
+    if (r < 0.52) return drumAction();
+    if (r < 0.7) return rollAction(AX.y, pick([1, -1]) * Math.PI / 2, 'spin', 1.3);
+    const w = new THREE.Vector3(...pick([[1, 0, 0], [-1, 0, 0], [0, 0, 1], [0, 0, -1]]));
+    return faceAction(w.applyQuaternion(_q.copy(cube.quaternion).invert()));
+  }
+
+  // ---------- camera orbit ----------
+  const orbit = { yaw: 0.62, pitch: 0.46, vy: 0, vp: 0, radius: 9.5 };
+  function placeCamera(time) {
+    const sway = reduced ? 0 : 0.04 * Math.sin(time * 0.25);
+    const yaw = orbit.yaw + sway, p = orbit.pitch;
+    camera.position.set(
+      target.x + orbit.radius * Math.cos(p) * Math.sin(yaw),
+      target.y + orbit.radius * Math.sin(p),
+      target.z + orbit.radius * Math.cos(p) * Math.cos(yaw)
+    );
+    camera.lookAt(target);
+  }
+  function resize() {
+    const w = stage.clientWidth, h = stage.clientHeight;
+    renderer.setSize(w, h);
+    camera.aspect = w / h;
+    orbit.radius = 9.5 * Math.max(1, 1.3 / camera.aspect);
+    camera.updateProjectionMatrix();
+  }
+  window.addEventListener('resize', resize);
+  resize();
+
+  // ---------- input ----------
+  const ray = new THREE.Raycaster();
+  const ndc = new THREE.Vector2();
+  let hovered = null; // hovered face direction in cube-local space
+  let down = null, lastInteract = -10, userActed = false;
+
+  function faceUnder(e) {
+    const r = renderer.domElement.getBoundingClientRect();
+    ndc.set(((e.clientX - r.left) / r.width) * 2 - 1, -((e.clientY - r.top) / r.height) * 2 + 1);
+    ray.setFromCamera(ndc, camera);
+    const hit = ray.intersectObject(cube, true)[0];
+    if (!hit || !hit.face) return null;
+    const n = hit.face.normal.clone().transformDirection(hit.object.matrixWorld);
+    n.applyQuaternion(cube.getWorldQuaternion(_q).invert());
+    const a = [Math.abs(n.x), Math.abs(n.y), Math.abs(n.z)];
+    const i = a.indexOf(Math.max(...a));
+    const v = new THREE.Vector3();
+    v.setComponent(i, Math.sign(n.getComponent(i)));
+    return v;
+  }
+  function interacted(time) {
+    lastInteract = time;
+    if (!userActed) { userActed = true; hintEl.classList.add('dismissed'); }
+  }
+
+  const el = renderer.domElement;
+  el.addEventListener('pointerdown', e => {
+    if (e.button !== 0) return;
+    down = { x: e.clientX, y: e.clientY, lx: e.clientX, ly: e.clientY, dragged: false };
+    try { el.setPointerCapture(e.pointerId); } catch {}
+  });
+  el.addEventListener('pointermove', e => {
+    if (down) {
+      if (!down.dragged && Math.hypot(e.clientX - down.x, e.clientY - down.y) > 5) {
+        down.dragged = true; el.classList.add('dragging'); interacted(clock.elapsedTime);
+      }
+      if (down.dragged) {
+        orbit.vy = -(e.clientX - down.lx) * 0.006; orbit.vp = (e.clientY - down.ly) * 0.004;
+        orbit.yaw += orbit.vy; orbit.pitch = clamp(orbit.pitch + orbit.vp, 0.08, 1.25);
+      }
+      down.lx = e.clientX; down.ly = e.clientY;
+      return;
+    }
+    hovered = faceUnder(e);
+    el.classList.toggle('pointing', !!hovered);
+  });
+  function release(e) {
+    if (!down) return;
+    if (!down.dragged) {
+      const f = faceUnder(e);
+      if (f) { interacted(clock.elapsedTime); if (queue.length < 3) queue.push(() => faceAction(f)); }
+    } else { orbit.vy = 0; orbit.vp = 0; }
+    el.classList.remove('dragging');
+    down = null;
+  }
+  el.addEventListener('pointerup', release);
+  el.addEventListener('pointercancel', () => { down = null; el.classList.remove('dragging'); });
+  el.addEventListener('pointerleave', () => { if (!down) { hovered = null; el.classList.remove('pointing'); } });
+  el.addEventListener('keydown', e => {
+    const map = { ArrowRight: [1, 0, 0], ArrowLeft: [-1, 0, 0], ArrowDown: [0, 0, 1], ArrowUp: [0, 0, -1] };
+    if (!map[e.key]) return;
+    e.preventDefault();
+    interacted(clock.elapsedTime);
+    const w = new THREE.Vector3(...map[e.key]);
+    if (queue.length < 3) queue.push(() => faceAction(w.applyQuaternion(_q.copy(cube.quaternion).invert())));
+  });
+
+  // ---------- loop ----------
+  const clock = new THREE.Clock();
+  let nextPlay = 2.5, ready = false;
+  const _n = new THREE.Vector3(), _h = new THREE.Vector3();
+
+  function frame() {
+    const dt = Math.min(clock.getDelta(), 1 / 30);
+    const time = clock.elapsedTime;
+
+    if (ready && !action) {
+      if (queue.length) action = queue.shift()();
+      else if (!reduced && time > nextPlay && time - lastInteract > 5) action = randomPlay();
+      if (action) { action.t = 0; action.begin(); }
+    }
+    let pose = restPose();
+    if (action) {
+      action.t += dt / action.dur;
+      pose = action.update(Math.min(1, action.t));
+      if (action.t >= 1) { action.end(); action = null; nextPlay = time + rand(2, 4); pose = restPose(); }
+    }
+    applyPose(pose, time);
+
+    const breathe = reduced ? 0 : 0.02 * Math.sin(time * 0.9);
+    hand.quaternion.setFromAxisAngle(AX.z, breathe).premultiply(handTilt);
+    hand.position.y = reduced ? 0 : 0.04 * Math.sin(time * 0.7);
+
+    if (!down) {
+      orbit.yaw += orbit.vy; orbit.pitch = clamp(orbit.pitch + orbit.vp, 0.08, 1.25);
+      orbit.vy *= 0.92; orbit.vp *= 0.92;
+    }
+    placeCamera(time);
+
+    if (hovered) _h.copy(hovered).transformDirection(cube.matrixWorld);
+    for (const st of stickers) {
+      let on = false;
+      if (hovered && !action) { _n.set(0, 0, 1).transformDirection(st.matrixWorld); on = _n.dot(_h) > 0.9; }
+      st.material.emissiveIntensity = lerp(st.material.emissiveIntensity, on ? 0.22 : 0, 0.25);
+    }
+
+    renderer.render(scene, camera);
+    requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+
+  // ---------- load the hand meshes ----------
+  fetch('leap_hand.bin')
+    .then(r => { if (!r.ok) throw new Error(r.status); return r.arrayBuffer(); })
+    .then(buf => {
+      const geo = {};
+      for (const [name, info] of Object.entries(MESHES)) geo[name] = buildGeometry(buf, info);
+      for (const [link, mesh, xyz, rpy] of LINKS) {
+        const m = new THREE.Mesh(geo[mesh], M[LINK_MAT[mesh]]);
+        m.position.fromArray(xyz);
+        m.rotation.copy(urdfEuler(rpy));
+        linkObj[link].add(m);
+      }
+      shadowy(leap);
+      ready = true;
+      hintEl.textContent = 'click a face to bring it to the top · drag to look around';
+    })
+    .catch(() => fail('Could not load the hand model. Open this page through a web server (e.g. VS Code Live Server) rather than as a file.'));
+})();
+</script>
+</body>
+</html>

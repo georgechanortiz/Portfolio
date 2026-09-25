@@ -26,7 +26,7 @@
 
 <div class="mast">
   <div class="label">Robotics</div>
-  <h1>Research and Projects</h1>
+  <h1>Research and Robotics Projects</h1>
   <p>Locomotion and reinforcement learning, planning and control, perception, and mechatronics</p>
 </div>
 
@@ -96,7 +96,7 @@
     <div class="proj-body">
       <div class="media">
         <div class="main"><img src="Files/RoboticsProjs/GradResearch/MPMSimwith2Muds.gif" alt="Quadruped walking through simulated mud"></div>
-        <div class="cap">Unitree quadruped in an MPM mud environment</div>
+        <div class="cap">Unitree quadruped in an MPM mud environment in IsaacLab's Newton branch</div>
         <div class="thumbs">
           <button type="button" aria-selected="true" data-src="Files/RoboticsProjs/GradResearch/MPMSimwith2Muds.gif" data-cap="Unitree quadruped in an MPM mud environment"><img src="Files/RoboticsProjs/GradResearch/MPMSimwith2Muds.gif" alt=""></button>
           <button type="button" aria-selected="false" data-src="Files/RoboticsProjs/GradResearch/diagram_of_forces.png" data-cap="MPM forces on the calf link; forces exceed zero when the leg is clear of the mud"><img src="Files/RoboticsProjs/GradResearch/diagram_of_forces.png" alt=""></button>
@@ -104,8 +104,12 @@
         </div>
       </div>
       <div class="text">
-        <p>In collaboration with FieldAI, this project develops an approach for mud-adaptive locomotion, enabling robots to move through highly variable muddy terrain safely and efficiently. I characterise the non-Newtonian contact forces acting on the robot and design a learned control framework to predict them, which lets the robot adapt its gait in real time to maintain stability and traction.</p>
-        <p>On the Newton branch of IsaacLab I imported the Unitree robot into the MPM example, tuned the PD gains to get a stable gait, loaded a custom policy onto the robot, and resolved two-way force coupling between the robot and the MPM environment.</p>
+        <p>A collaborative research grant between the Robomechanics Lab and FieldAI, this project develops an approach for mud-adaptive locomotion. 
+           Mud exhibits a complex, viscoplastic behavior, which introduces unmodeled shear, resistive, and suction forces during 
+           swing, intrusion, and extrusion phases of a robot's gait. These forces are dependent on the mud's rheology, which current 
+           high fidelity simulators model but are difficult to leverage for large-scale reinforcement learning. My work involves 
+           reduced-order modeling to characterize these nonlinear forces on the robot, and designing learned controllers for adaptive locomotion.  </p>
+        <p></p>
         <ul class="chips"><li>NVIDIA Isaac</li><li>Newton</li><li>Genesis</li><li>Reinforcement Learning</li><li>Python</li></ul>
       </div>
     </div>
@@ -131,7 +135,7 @@
         <div class="thumbs">
           <button type="button" aria-selected="true"  data-type="video"
                   data-src="Files/RoboticsProjs/GradResearch/MuJoCo/Screencast from 2026-06-10 21-40-22.webm.mp4"
-                  data-cap="Quadruped running in MuJoCo through Quad-SDK">
+                  data-cap="MuJoCo simulation run">
             <video muted preload="metadata" src="Files/RoboticsProjs/GradResearch/MuJoCo/Screencast from 2026-06-10 21-40-22.webm.mp4#t=0.1"></video>
           </button>
           <button type="button" aria-selected="false" data-type="video"
@@ -147,8 +151,14 @@
         </div>
       </div>
       <div class="text">
-        <p>As part of Quad-SDK's migration to ROS2, I added support for MuJoCo as a new simulation backend. MuJoCo's convex-optimization-based contact solver produces smoother, better-conditioned dynamics, and it's widely used in modern robotics research for simulation and learning control policies. I made a range of quadrupeds compatible with Quad-SDK's existing environment samples and wired them into the control stack.</p>
-        <p>I also wrote new plotting code to visualize simulation results and analyze quadruped performance under various conditions. Quad-SDK's original plotting code was written in MATLAB, which produced good paper-quality plots but was slow to generate, so I built faster tooling suited to day-to-day debugging and analysis. It's since been used to debug and analyze performance on a beam-walking locomotion project.</p>
+        <p>I contributed to Quad-SDK, a full-stack, open-source, ROS-based framework for quadruped control and locomotion. As part of Quad-SDK's migration 
+          to ROS2, I've added support for MuJoCo as an alternative to Gazebo's hard contact model. MuJoCo's convex-optimization-based contact solver produces 
+          smoother, better conditioned dynamics, which has grown in popularity for modern robotics research for simulation and learning control policies. I added 
+          compatibility between a range of quadrupeds and Quad-SDK's existing environment samples, wiring them both into the original control stack. </p>
+        <p>I've also written plotting code to visualize hardware bag files and analyze quadruped performance under various conditions. Quad-SDK has plotting code 
+          written in MATLAB, which produces paper-quality plots at the cost of generation speed. I built faster tooling suited to day-to-day debugging and analysis 
+          with Python. This code has been used to debug and analyze quadruped performance on several quadruped projects in the Lab. 
+        </p>
         <ul class="chips"><li>MuJoCo</li><li>Quad-SDK</li><li>ROS2</li><li>Simulation</li><li>Python</li></ul>
       </div>
     </div>
@@ -174,9 +184,21 @@
         </div>
       </div>
       <div class="text">
-        <p>My team was given the components to construct an SO-100 robot arm — motors, controllers, 3D printed parts and cameras. We planned, built and calibrated the arm to match the leader arm configuration, then trained it by teleoperation. During training we saw a lot of noise in the learned policy, which stopped the pen from being picked up reliably.</p>
-        <p>Subtracting the leader and follower curves isolated most of the electrical noise, and a low-pass filter greatly reduced the joint trembling. Frame skipping — feeding every other frame as a command — doubled the arm's speed. We won the $1,000 prize for Most Innovative Use of Data.</p>
-        <ul class="chips"><li>Calibration</li><li>Reinforcement Learning</li><li>ACT Policy</li><li>Signal Processing</li><li>Vision Feedback</li></ul>
+        <p> This NYC-based hackathon involved constructing and controlling an SO-100 robot arm to complete a task. I calibrated the follower arm's 
+          joint offsets and torque limits to match the leader configuration, and collected training data via teleoperation, logging joint states and 
+          camera frames. After gathering  150 demonstration episodes, we trained an Action Chunking Transformer (ACT) policy via behavioral cloning 
+          for 100K training steps, using the recorded joint trajectories and visual input as supervision. </p>
+        <p>
+<!-- Subtracting the leader and follower curves isolated most of the electrical noise, and a low-pass filter greatly reduced the joint 
+          trembling. Frame skipping — feeding every other frame as a command — doubled the arm's speed. We won the $1,000 prize for Most Innovative 
+          Use of Data. -->
+          Our first policy suffered from significant jittering, preventing our arm from reliably performing our task of drawing on paper. 
+          We traced this issue to the encoder noise rather than the policy. By subtracting the leader and follower joint trajectories, we 
+          isolated noise in the system, and applying a low pass filter smoothed the actions. We also experimented with inference-sided solutions, 
+          which included frame skipping to increase execution speed. 
+
+        </p>
+        <ul class="chips"><li>Calibration</li><li>Reinforcement Learning</li><li>Action-Chunking Transformers</li><li>Signal Processing</li><li>Vision Feedback</li></ul>
         <div class="out"><a href="https://devpost.com/software/kanye-assistant" target="_blank" rel="noopener">Devpost writeup ↗</a></div>
       </div>
     </div>
@@ -203,8 +225,13 @@
         </div>
       </div>
       <div class="text">
-        <p>This project implemented a range of controllers and estimators for a self-driving vehicle. I began by tuning the proportional, integral and derivative gains for PID performance. Since longitudinal control varies the speed, I linearised the lateral control using pole placement, discretised the model, and implemented LQR — which after tuning completed the track in under 130 seconds. Most of that gain came from tuning how far ahead the vehicle looked, giving it more time to react.</p>
-        <p>I also implemented planning and estimation. A* replanned the trajectory when a slower car acted as an obstacle, letting the vehicle overtake on the straight, and EKF SLAM estimated the rough position and heading of the vehicle throughout.</p>
+        <p>This course project aimed to implement a variety of increasingly complex controllers and estimators for a self-driving vehicle. I began by 
+          tuning proportional, integral and derivative gains for PID performance. Since longitudinal control varies the speed, I linearised the lateral 
+          control using pole placement, discretised the model, and implemented LQR — which completed the track in under 130 seconds after tuning the model. 
+          </p>
+
+        <p>I also implemented planning and estimation. A* replanned the trajectory when a slower car acted as an obstacle, letting the vehicle overtake on 
+          the straight, and EKF SLAM estimated the rough position and heading of the vehicle throughout the race when ground-truth was not available.</p>
         <ul class="chips"><li>Linearization</li><li>PID</li><li>LQR</li><li>MPC</li><li>A*</li><li>EKF SLAM</li></ul>
       </div>
     </div>
