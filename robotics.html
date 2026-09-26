@@ -25,7 +25,6 @@
 </header>
 
 <div class="mast">
-  <div class="label">Robotics</div>
   <h1>Research and Robotics Projects</h1>
   <p>Locomotion and reinforcement learning, planning and control, perception, and mechatronics</p>
 </div>
@@ -116,9 +115,41 @@
   </article>
 
   <!-- ============ 02 ============ -->
-  <article class="proj" id="mujoco" data-cap="locomotion control research">
+  <!-- TEMPLATE: fill in, or see the "ADDING A PROJECT" notes at the bottom of this file -->
+  <article class="proj" id="beam-walk" data-cap="research">
     <div class="proj-head">
       <span class="num">02</span>
+      <div>
+        <h2>Duty Factor Predicts Robust Constrained Quadrupedal Locomotion Across Gait Types</h2>
+        <div class="where">Robomechanics Lab, CMU</div>
+      </div>
+    </div>
+    <div class="proj-body">
+      <div class="media">
+        <div class="main"><img src="Files/RoboticsProjs/BeamWalk/Go2onbeam.png" alt="Describe the image"></div>
+        <div class="cap">Unitree Go2 traversing a 15 cm wide balance beam</div>
+        <div class="thumbs">
+          <button type="button" aria-selected="true"  data-src="Files/RoboticsProjs/BeamWalk/Go2onbeam.png" data-cap="Caption for the image above"><img src="Files/RoboticsProjs/BeamWalk/Go2onbeam.png" alt=""></button>
+          <!-- <button type="button" aria-selected="false" data-src="Files/RoboticsProjs/Folder/two.png"  data-cap="Second caption"><img src="Files/RoboticsProjs/Folder/two.png" alt=""></button> -->
+        </div>
+      </div>
+      <div class="text">
+        <p>Quadruped gaits are usually labeled as a walk or a trot, but one gait can run at many duty factors, speeds, and stance
+           widths. We show that duty factor, the fraction of a gait cycle each foot spends on the ground, predicts how robust a
+           quadruped's locomotion is far better than gait type. At a matched duty factor, walking and trotting perform statistically the same.</p>
+        <p>The trend holds across three independent controllers: whole-body trajectory optimization, a reinforcement learning policy
+           that learns to pick higher duty factors as terrain narrows, and centroidal MPC on a real Unitree Go2. On a 15 cm beam,
+           the Go2 crossed every time at a 0.75 duty factor, with no tail or reaction wheel.</p>
+        <ul class="chips"><li>Submitted to ICRA 2026, Pending Review</li><li>MPC</li><li>Estimation</li></ul>
+        <div class="out"><a href="https://arxiv.org/abs/2609.22073" target="_=blank" rel="noopener">Arxiv Link ↗</a></div>
+      </div>
+    </div>
+  </article>
+
+  <!-- ============ 03 ============ -->
+  <article class="proj" id="mujoco" data-cap="locomotion control research">
+    <div class="proj-head">
+      <span class="num">03</span>
       <div>
         <h2>Quad-SDK: MuJoCo Integration, Plotting Code</h2>
         <div class="where">Robomechanics Lab, CMU</div>
@@ -164,10 +195,10 @@
     </div>
   </article>
 
-  <!-- ============ 03 ============ -->
+  <!-- ============ 04 ============ -->
   <article class="proj" id="hackathon" data-cap="locomotion perception">
     <div class="proj-head">
-      <span class="num">03</span>
+      <span class="num">04</span>
       <div>
         <h2>LeRobot Arm Hackathon NYC — SO-100</h2>
         <div class="where">Hackathon · $1,000 prize</div>
@@ -204,10 +235,10 @@
     </div>
   </article>
 
-  <!-- ============ 04 ============ -->
+  <!-- ============ 05 ============ -->
   <article class="proj" id="fsd" data-cap="control">
     <div class="proj-head">
-      <span class="num">04</span>
+      <span class="num">05</span>
       <div>
         <h2>Using Webots to Design FSD for a Tesla Model 3</h2>
         <div class="where">24-677 · Carnegie Mellon University</div>
@@ -237,10 +268,10 @@
     </div>
   </article>
 
-  <!-- ============ 05 ============ -->
+  <!-- ============ 06 ============ -->
   <article class="proj" id="slamrrt" data-cap="control">
     <div class="proj-head">
-      <span class="num">05</span>
+      <span class="num">06</span>
       <div>
         <h2>SLAM and RRT for a 2D Mobile Robot</h2>
         <div class="where">ME 656 · Stevens Institute of Technology</div>
@@ -265,10 +296,10 @@
     </div>
   </article>
 
-  <!-- ============ 06 ============ -->
+  <!-- ============ 07 ============ -->
   <article class="proj" id="manipulation" data-cap="control">
     <div class="proj-head">
-      <span class="num">06</span>
+      <span class="num">07</span>
       <div>
         <h2>Resolved Rates &amp; Min-Norm Redundancy Resolution</h2>
         <div class="where">ME 650, Stevens Institute of Technology</div>
@@ -287,10 +318,10 @@
     </div>
   </article>
 
-  <!-- ============ 07 ============ -->
+  <!-- ============ 08 ============ -->
   <article class="proj" id="camera" data-cap="perception research">
     <div class="proj-head">
-      <span class="num">07</span>
+      <span class="num">08</span>
       <div>
         <h2>Camera Vision — Doosan H2515 Pick and Place</h2>
         <div class="where">PROOF Lab, Stevens Institute of Technology</div>
@@ -313,10 +344,10 @@
     </div>
   </article>
 
-  <!-- ============ 08 ============ -->
+  <!-- ============ 09 ============ -->
   <article class="proj" id="sesma" data-cap="mechatronics">
     <div class="proj-head">
-      <span class="num">08</span>
+      <span class="num">09</span>
       <div>
         <h2>SESMA 3.0 — Soft Exosuit for Spinal Muscular Atrophy</h2>
         <div class="where">Senior capstone · Stevens Institute of Technology</div>
@@ -342,10 +373,10 @@
     </div>
   </article>
 
-  <!-- ============ 09 ============ -->
+  <!-- ============ 10 ============ -->
   <article class="proj" id="grip" data-cap="mechatronics">
     <div class="proj-head">
-      <span class="num">09</span>
+      <span class="num">10</span>
       <div>
         <h2>Hand Squeezing Device for Grip Rehabilitation</h2>
         <div class="where">ME 522 · Stevens Institute of Technology</div>
@@ -369,10 +400,10 @@
     </div>
   </article>
 
-  <!-- ============ 10 ============ -->
+  <!-- ============ 11 ============ -->
   <article class="proj" id="endeffector" data-cap="mechatronics">
     <div class="proj-head">
-      <span class="num">10</span>
+      <span class="num">11</span>
       <div>
         <h2>Robot End Effector for Pick and Place</h2>
         <div class="where">PROOF Lab, Stevens Institute of Technology</div>

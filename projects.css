@@ -9,7 +9,7 @@
 .mast h1 {
   font-family: var(--display); font-weight: 700;
   font-size: clamp(2.4rem, 6.5vw, 4.2rem);
-  line-height: .98; letter-spacing: -.025em; margin-top: .8rem;
+  line-height: .98; letter-spacing: -.025em;
 }
 .mast p { color: var(--muted); font-size: 1rem; margin-top: .9rem; max-width: 60ch; }
 

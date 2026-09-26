@@ -48,19 +48,20 @@
 
   <!-- ===================== ABOUT ===================== -->
   <section id="about" class="about">
+    <div class="sec-head"><h2>Who I am</h2></div>
     <div>
-      <div class="label">Who I am</div>
       <p class="body-text">
+        I am a second-year Master's student in Mechanical Engineering at Carnegie Mellon University. 
         My research in the <a href="https://www.cmu.edu/me/robomechanicslab/">Robomechanics Lab</a>,  advised by  
         <a href="https://www.meche.engineering.cmu.edu/directory/bios/johnson-aaron.html">Prof. Aaron Johnson</a>,
-        involves simulating robots in different environments, deploying policies and running hardware experiments, and designing robust learned 
+        involves simulating quadrupeds in different environments, deploying policies and running hardware experiments, and designing robust learned 
         controllers over complex, contact-rich natural environments. 
 
       </p>
       <p class="body-text">
         Prior to CMU, I earned my Bachelors of Engineering in Mechanical Engineering from Stevens institute of Technology, where I worked 
         in the <a href="https://prooflab.stevens.edu/">PROOF Lab</a> under 
-        <a href="https://www.stevens.edu/profile/kpochira">Prof. Kishore Pochiraju</a>.
+        <a href="https://www.stevens.edu/profile/kpochira">Prof. Kishore Pochiraju</a> designing algorithms for manipulation tasks. 
         I'm originally from Queens, NYC and am currently based in Pittsburgh. 
       </p>
     </div>
@@ -70,8 +71,7 @@
   <!-- ===================== NEWS ===================== -->
   <section id="news">
     <div class="sec-head">
-      <div class="label">01 — Recent news</div>
-      <h2>What I've been up to</h2>
+      <h2>Recent news</h2>
     </div>
 
     <ul class="news">
@@ -165,7 +165,6 @@
   <!-- Hidden: covered by the resume
   <section id="experience">
     <div class="sec-head">
-      <div class="label">02 — Experience</div>
       <h2>Work Experience</h2>
     </div>
 
@@ -217,7 +216,6 @@
   <!-- Hidden: covered by the About section and resume
   <section id="education">
     <div class="sec-head">
-      <div class="label">03 — Education</div>
       <h2>Education</h2>
     </div>
 
@@ -244,11 +242,26 @@
   <!-- ===================== PROJECTS ===================== -->
   <section id="projects">
     <div class="sec-head">
-      <div class="label">02 — Selected projects</div>
       <h2>Selected projects</h2>
     </div>
 
     <div class="grid">
+      <a class="card" href="robotics.html#quad">
+        <div class="thumb"><img src="Files/RoboticsProjs/GradResearch/MPMSimwith2Muds.gif" alt="Quadruped walking through simulated mud in an MPM environment"></div>
+        <div class="txt">
+          <h3>Quadruped Locomotion Through Mud</h3>
+          <p>Reduced-order models of mud forces and learned controllers for mud-adaptive locomotion, with FieldAI.</p>
+        </div>
+      </a>
+
+      <a class="card" href="robotics.html#mujoco">
+        <div class="thumb"><video src="Files/RoboticsProjs/GradResearch/MuJoCo/Screencast from 2026-06-10 21-40-22.webm.mp4" autoplay muted loop playsinline preload="metadata" aria-label="Quadruped running in MuJoCo through Quad-SDK"></video></div>
+        <div class="txt">
+          <h3>Quad-SDK: MuJoCo Integration</h3>
+          <p>MuJoCo support for Quad-SDK's ROS2 control stack, plus Python tools for analyzing hardware runs.</p>
+        </div>
+      </a>
+
       <a class="card" href="robotics.html#fsd">
         <div class="thumb"><img src="Files/RoboticsProjs/MCTProject/FSDProj.png" alt="Self-driving Tesla Model 3 simulated in Webots"></div>
         <div class="txt">
@@ -278,22 +291,6 @@
         <div class="txt">
           <h3>Resolved Rates and Manipulation</h3>
           <p>Null-space projection and min-norm pseudoinverse redundancy resolution in MATLAB.</p>
-        </div>
-      </a>
-
-      <a class="card" href="robotics.html">
-        <div class="thumb"><img src="Files/RoboticsProjs/SLAMRRT/SLAMAndRRT.png" alt="SLAM and RRT path planning for a 2D mobile robot"></div>
-        <div class="txt">
-          <h3>SLAM and RRT Planning</h3>
-          <p>Sampling-based planning with Kalman-filtered uncertainty along the trajectory.</p>
-        </div>
-      </a>
-
-      <a class="card" href="miscellaneous.html">
-        <div class="thumb"><img src="Files/MiscProjs/GNPResearch/GoldNanoparticles.png" alt="Gold nanoparticle solutions of varying concentration"></div>
-        <div class="txt">
-          <h3>Extracurricular work</h3>
-          <p>Gold nanoparticle research, woodworking, machining, and other ventures.</p>
         </div>
       </a>
     </div>
